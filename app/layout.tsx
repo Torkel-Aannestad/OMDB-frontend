@@ -4,6 +4,7 @@ import "../styles/globals.css";
 import { cn } from "@/utils/tailwind";
 import { SiteHeader } from "@/components/site-header";
 import { Container } from "@/components/container";
+import { SiteFooter } from "@/components/site-footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       >
         <SiteHeader />
         <Container className="relative flex-1 py-4">{children}</Container>
+        <SiteFooter />
       </body>
     </html>
   );
