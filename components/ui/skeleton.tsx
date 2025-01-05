@@ -1,4 +1,5 @@
-import { cn } from "@/utils"
+import { cn } from "@/utils/tailwind"
+
 
 function Skeleton({
   className,
