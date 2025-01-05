@@ -17,9 +17,12 @@ export function SiteHeader() {
     <header>
       <Container>
         <div className="flex flex-col items-center sm:flex-row bg-background lg:gap-4">
-          <div className="self-start inline-flex cursor-pointer items-center px-1 text-2xl lg:text-3xl font-bold text-neutral-800 py-2 mt-4 sm:my-8 sm:pr-8">
+          <Link
+            href="/"
+            className="self-start inline-flex cursor-pointer items-center px-1 text-2xl lg:text-3xl font-bold text-neutral-800 py-2 mt-4 sm:my-8 sm:pr-8"
+          >
             OMDB
-          </div>
+          </Link>
           <div className="flex gap-2 lg:gap-4">
             <NavItem
               title="Home"
