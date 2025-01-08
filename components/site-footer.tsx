@@ -7,11 +7,12 @@ export function SiteFooter() {
   return (
     <footer className="mt-12 border-t bg-background">
       <Container className="flex flex-col lg:flex-row">
-        <div className="px-2 py-8 pt-12 text-muted-foreground md:p-12">
-          <Icons.Shadcn className="size-8" />
+        <div className=" py-8 pt-12 text-muted-foreground md:p-12">
+          <span className="font-bold text-3xl">OMDB</span>
+          {/* <Icons.Shadcn className="size-8" /> */}
         </div>
-        <div className="flex-1 p-12 px-2 py-8 md:p-12">
-          <div className="flex flex-col justify-between gap-12 xl:flex-row xl:items-center">
+        <div className="flex-1 pt-12 py-8 md:p-12">
+          <div className="flex flex-col justify-between gap-12 xl:flex-row xl:items-center ">
             <div className="text-sm text-muted-foreground">
               <p>
                 Built by{" "}
@@ -50,7 +51,7 @@ export function SiteFooter() {
               <p className="mt-8">
                 Data provided by{" "}
                 <Link
-                  href="https://www.themoviedb.org/"
+                  href="https://developer.themoviedb.org/docs/getting-started"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-foreground"
