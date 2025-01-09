@@ -11,26 +11,33 @@ const defaultParams: Record<string, string> = {
 
 type FetcherOptions = {
   endpoint: string;
-  params?: Record<string, string>;
+  params?: Record<string, string | undefined>;
 };
 
-type Fetcher = <T>(options: FetcherOptions, init: RequestInit) => Promise<T>;
+type Fetcher = <T>(options: FetcherOptions, init?: RequestInit) => Promise<T>;
+
+function sanitizeParams(params?: Record<string, string | undefined>) {
+  return Object.fromEntries(
+    Object.entries(params ?? {}).filter(([, value]) => value !== undefined)
+  );
+}
 
 function createSearchParams(params: Record<string, string | undefined>) {
+  const sanitizedParams = sanitizeParams(params);
   const mergedParams: Record<string, string> = {
     ...defaultParams,
-    ...params,
+    ...sanitizedParams,
   } as Record<string, string>;
   return new URLSearchParams(mergedParams).toString();
 }
 
-function createHeaders(init: RequestInit): Headers {
+function createHeaders(init?: RequestInit): Headers {
   const headers = init?.headers ?? {};
   const mergedHeaders = { ...defaultHeaders, ...headers };
   return new Headers(mergedHeaders);
 }
 
-const fetcher: Fetcher = async ({ endpoint, params }, init) => {
+const fetcher: Fetcher = async ({ endpoint, params }, init?) => {
   const _params = createSearchParams(params ?? {});
   const _headers = createHeaders(init);
 

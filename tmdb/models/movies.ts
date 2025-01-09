@@ -22,7 +22,7 @@ export type Movie = {
   adult: boolean;
 };
 
-export type MovieDetail = {
+export type MovieDetails = {
   id: number;
   title: string;
   overview: string;

@@ -4,3 +4,4 @@ export * from "./movies";
 export * from "./reviews";
 export * from "./seasons";
 export * from "./series";
+export * from "./videos";
