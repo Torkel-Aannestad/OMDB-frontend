@@ -30,12 +30,9 @@ function list({ list, page = "1", region }: SerieListRequestParams) {
   });
 }
 
-function detail<T>({ id, append }: SerieDetailsRequestParams) {
-  api.fetcher<SerieDetails & T>({
+function details({ id }: SerieDetailsRequestParams) {
+  api.fetcher<SerieDetails>({
     endpoint: `tv/${id}`,
-    params: {
-      append_to_response: append,
-    },
   });
 }
 
@@ -89,7 +86,7 @@ function reviews({ id, page }: SerieReviewsRequestParams) {
 
 export const series = {
   list,
-  detail,
+  details,
   credits,
   recommendations,
   similar,
