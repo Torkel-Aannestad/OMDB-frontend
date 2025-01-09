@@ -13,7 +13,7 @@ function list({ list, page }: PeopleListRequestParams) {
   });
 }
 
-function detail({ id, append }: PersonDetailsRequestParams) {
+function details({ id, append }: PersonDetailsRequestParams) {
   return api.fetcher<PersonDetails>({
     endpoint: `person/${id}`,
     params: {
@@ -24,5 +24,5 @@ function detail({ id, append }: PersonDetailsRequestParams) {
 
 export const person = {
   list,
-  detail,
+  details,
 };

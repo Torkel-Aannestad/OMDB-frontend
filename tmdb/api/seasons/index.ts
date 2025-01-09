@@ -21,7 +21,7 @@ function aggregateCredits({ id, season }: SerieSeasonsDetailsRequestParams) {
   });
 }
 
-export const tvSeasons = {
+export const seasons = {
   details,
   credits,
   aggregateCredits,
