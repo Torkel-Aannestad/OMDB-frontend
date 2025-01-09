@@ -1,0 +1,28 @@
+import { ListResponse } from "@/tmdb/api/types";
+import { Person, PersonDetails } from "@/tmdb/models/people";
+
+import { api } from "../api";
+import { PeopleListRequestParams, PersonDetailsRequestParams } from "./types";
+
+function list({ list, page }: PeopleListRequestParams) {
+  return api.fetcher<ListResponse<Person>>({
+    endpoint: `person/${list}`,
+    params: {
+      page,
+    },
+  });
+}
+
+function detail({ id, append }: PersonDetailsRequestParams) {
+  return api.fetcher<PersonDetails>({
+    endpoint: `person/${id}`,
+    params: {
+      append_to_response: append,
+    },
+  });
+}
+
+export const person = {
+  list,
+  detail,
+};
