@@ -5,7 +5,7 @@ import { ListResponse } from "../types";
 import { SearchRequestParams } from "./types";
 
 function multi({ query, page = "1" }: SearchRequestParams) {
-  api.fetcher<ListResponse<Movie | Serie>>({
+  return api.fetcher<ListResponse<Movie | Serie>>({
     endpoint: "/search/multi",
     params: {
       query,
@@ -16,7 +16,7 @@ function multi({ query, page = "1" }: SearchRequestParams) {
 }
 
 function movies({ query, page = "1" }: SearchRequestParams) {
-  api.fetcher<ListResponse<Movie>>({
+  return api.fetcher<ListResponse<Movie>>({
     endpoint: "/search/multi",
     params: {
       query,
@@ -27,7 +27,7 @@ function movies({ query, page = "1" }: SearchRequestParams) {
 }
 
 function series({ query, page = "1" }: SearchRequestParams) {
-  api.fetcher<ListResponse<Serie>>({
+  return api.fetcher<ListResponse<Serie>>({
     endpoint: "/search/multi",
     params: {
       query,

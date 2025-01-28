@@ -21,7 +21,7 @@ import {
 } from "./types";
 
 function list({ list, page = "1", region }: SerieListRequestParams) {
-  api.fetcher<ListResponse<Serie>>({
+  return api.fetcher<ListResponse<Serie>>({
     endpoint: `tv/${list}`,
     params: {
       page,
@@ -31,19 +31,19 @@ function list({ list, page = "1", region }: SerieListRequestParams) {
 }
 
 function details({ id }: SerieDetailsRequestParams) {
-  api.fetcher<SerieDetails>({
+  return api.fetcher<SerieDetails>({
     endpoint: `tv/${id}`,
   });
 }
 
 function credits({ id }: SerieCreditsRequestParams) {
-  api.fetcher<Credits>({
+  return api.fetcher<Credits>({
     endpoint: `tv/${id}/credits`,
   });
 }
 
 function recommendations({ id, page }: SerieRecommendationsRequestParams) {
-  api.fetcher<ListResponse<Serie>>({
+  return api.fetcher<ListResponse<Serie>>({
     endpoint: `tv/${id}/recommendations`,
     params: {
       page,
@@ -52,7 +52,7 @@ function recommendations({ id, page }: SerieRecommendationsRequestParams) {
 }
 
 function similar({ id, page }: SerieSimilarRequestParams) {
-  api.fetcher<ListResponse<Serie>>({
+  return api.fetcher<ListResponse<Serie>>({
     endpoint: `tv/${id}/similar`,
     params: {
       page,
@@ -61,7 +61,7 @@ function similar({ id, page }: SerieSimilarRequestParams) {
 }
 
 function images({ id, langs }: SerieImagesRequestParams) {
-  api.fetcher<GetImagesResponse>({
+  return api.fetcher<GetImagesResponse>({
     endpoint: `tv/${id}/images`,
     params: {
       include_image_language: langs,
@@ -70,13 +70,13 @@ function images({ id, langs }: SerieImagesRequestParams) {
 }
 
 function videos({ id }: SerieVideosRequestParams) {
-  api.fetcher<GetVideosResponse>({
+  return api.fetcher<GetVideosResponse>({
     endpoint: `tv/${id}/videos`,
   });
 }
 
 function reviews({ id, page }: SerieReviewsRequestParams) {
-  api.fetcher<ListResponse<Review>>({
+  return api.fetcher<ListResponse<Review>>({
     endpoint: `tv/${id}/reviews`,
     params: {
       page,

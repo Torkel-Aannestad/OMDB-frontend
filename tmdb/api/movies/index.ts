@@ -21,7 +21,7 @@ import {
 } from "./types";
 
 function list({ list, page, region }: MovieListRequestParams) {
-  api.fetcher<ListResponse<Movie>>({
+  return api.fetcher<ListResponse<Movie>>({
     endpoint: `movie/${list}`,
     params: {
       page,
@@ -37,13 +37,13 @@ function details({ id }: MovieDetailsRequestParams) {
 }
 
 function credits({ id }: MovieCreditsRequestParams) {
-  api.fetcher<Credits>({
+  return api.fetcher<Credits>({
     endpoint: `movie/${id}/credits`,
   });
 }
 
 function recommendations({ id, page }: MovieRecommendationsRequestParams) {
-  api.fetcher<ListResponse<Movie>>({
+  return api.fetcher<ListResponse<Movie>>({
     endpoint: `movie/${id}/recommendations`,
     params: {
       page,
@@ -52,7 +52,7 @@ function recommendations({ id, page }: MovieRecommendationsRequestParams) {
 }
 
 function similar({ id, page }: MovieSimilarRequestParams) {
-  api.fetcher<ListResponse<Movie>>({
+  return api.fetcher<ListResponse<Movie>>({
     endpoint: `movie/${id}/similar`,
     params: {
       page,
@@ -61,7 +61,7 @@ function similar({ id, page }: MovieSimilarRequestParams) {
 }
 
 function images({ id, langs }: MovieImagesRequestParams) {
-  api.fetcher<GetImagesResponse>({
+  return api.fetcher<GetImagesResponse>({
     endpoint: `movie/${id}/images`,
     params: {
       include_image_language: langs,
@@ -70,13 +70,13 @@ function images({ id, langs }: MovieImagesRequestParams) {
 }
 
 function videos({ id }: MovieVideosRequestParams) {
-  api.fetcher<GetVideosResponse>({
+  return api.fetcher<GetVideosResponse>({
     endpoint: `movie/${id}/videos`,
   });
 }
 
 function reviews({ id, page }: MovieReviewsRequestParams) {
-  api.fetcher<ListResponse<Review>>({
+  return api.fetcher<ListResponse<Review>>({
     endpoint: `movie/${id}/reviews`,
     params: {
       page,
