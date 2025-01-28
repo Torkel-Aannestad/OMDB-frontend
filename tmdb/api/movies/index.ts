@@ -31,7 +31,7 @@ function list({ list, page, region }: MovieListRequestParams) {
 }
 
 function details({ id }: MovieDetailsRequestParams) {
-  api.fetcher<MovieDetails>({
+  return api.fetcher<MovieDetails>({
     endpoint: `movie/${id}`,
   });
 }
