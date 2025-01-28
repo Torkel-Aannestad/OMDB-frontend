@@ -69,4 +69,7 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+  .h-hero {
+    @apply h-[60vh] min-h-[560px];
+  }
 }
