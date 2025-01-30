@@ -5,7 +5,7 @@ import { Skeleton } from "./ui/skeleton";
 
 function Root({ className, children, ...props }: ComponentProps<"div">) {
   return (
-    <div className={cn("overflow-hidden", className)} {...props}>
+    <div className={className} {...props}>
       {children}
     </div>
   );
@@ -62,18 +62,8 @@ function Content({ className, children, ...props }: ComponentProps<"div">) {
   );
 }
 
-function Genres({ className, children, ...props }: ComponentProps<"div">) {
-  return (
-    <div
-      className={cn(
-        "container mt-4 md:mt-8 md:px-16 xl:mt-12 xl:px-32",
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </div>
-  );
+function Genres({ className, ...props }: ComponentProps<"div">) {
+  return <div className={cn("flex flex-wrap gap-2", className)} {...props} />;
 }
 
 function Genre({ variant = "secondary", ...props }: BadgeProps) {
@@ -89,12 +79,14 @@ function Title({ className, ...props }: ComponentProps<"h1">) {
   );
 }
 
-function Overview({ className, ...props }: ComponentProps<"div">) {
+function Overview({ className, children, ...props }: ComponentProps<"p">) {
   return (
-    <div
+    <p
       className={cn("space-y-4 text-muted-foreground xl:text-lg", className)}
       {...props}
-    />
+    >
+      {children}
+    </p>
   );
 }
 

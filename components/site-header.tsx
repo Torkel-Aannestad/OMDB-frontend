@@ -55,7 +55,7 @@ function NavItem({ title, href, icon, className }: NavItem) {
     <Link
       href={href}
       className={cn(
-        "inline-flex flex-col sm:flex-row cursor-pointer items-center px-1 sm:text-lg lg:text-xl font-semibold text-neutral-800 my-4 sm:my-8",
+        "inline-flex flex-col sm:flex-row cursor-pointer items-center px-1 sm:text-lg  font-semibold text-neutral-800 my-4 sm:my-8",
         className && className
       )}
     >
