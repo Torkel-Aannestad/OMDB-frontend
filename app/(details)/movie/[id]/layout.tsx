@@ -39,6 +39,7 @@ export default async function DetailLayout({
     poster_path,
     release_date,
     tagline,
+    runtime,
   } = await tmdb.movie.details({
     id: params.id,
   });
@@ -54,11 +55,23 @@ export default async function DetailLayout({
           <MediaPoster image={poster_path} alt={title} size="w780" priority />
         </MediaDetailView.Poster>
         <div className="space-y-4">
+          <MediaDetailView.Title>
+            {title}{" "}
+            <span className="font-light text-muted-foreground">
+              ({format.year(format.date(release_date))})
+            </span>
+          </MediaDetailView.Title>
           <MediaDetailView.Genres>
+            <MediaDetailView.Rating>
+              {vote_average
+                ? `${(vote_average * 10).toFixed(0)}% User Rating`
+                : "N/A"}
+            </MediaDetailView.Rating>
             <MediaDetailView.Genre>
-              {vote_average ? vote_average.toFixed(1) : "N/A"}
+              {format.runtime(runtime)}
             </MediaDetailView.Genre>
-
+          </MediaDetailView.Genres>
+          <MediaDetailView.Genres>
             {genres?.map((genre) => (
               <MediaDetailView.Genre key={genre.id}>
                 {genre.name}
@@ -66,22 +79,18 @@ export default async function DetailLayout({
             ))}
           </MediaDetailView.Genres>
 
-          <MediaDetailView.Title>
-            {title}{" "}
-            <span className="font-light text-muted-foreground">
-              ({format.year(format.date(release_date))})
-            </span>
-          </MediaDetailView.Title>
-
           {tagline && (
             <MediaDetailView.Overview>
               &quot;{tagline}&quot;
             </MediaDetailView.Overview>
           )}
           <MediaDetailView.Overview>{overview}</MediaDetailView.Overview>
+          <MediaDetailView.Overview>
+            Director Some Name
+          </MediaDetailView.Overview>
         </div>
       </MediaDetailView.Hero>
-      <MediaDetailView.Title>Hi here</MediaDetailView.Title>
+      <MediaDetailView.Content></MediaDetailView.Content>
     </MediaDetailView.Root>
   );
 }
