@@ -9,9 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { format } from "@/tmdb/utils";
 
 interface DetailLayoutProps {
-  params: {
-    id: string;
-  };
+  params: Promise<{ id: string }>;
   children: React.ReactNode;
 }
 
@@ -28,8 +26,9 @@ export default async function DetailLayout({
   params,
   children,
 }: DetailLayoutProps) {
+  const { id } = await params;
+
   const {
-    id,
     title,
     overview,
     genres,
@@ -41,8 +40,13 @@ export default async function DetailLayout({
     tagline,
     runtime,
   } = await tmdb.movie.details({
-    id: params.id,
+    id: id,
   });
+
+  const { crew, cast } = await tmdb.movie.credits({
+    id: id,
+  });
+  const director = crew.find((crew) => crew.job === "Director");
 
   if (!id) notFound();
   return (
@@ -86,11 +90,16 @@ export default async function DetailLayout({
           )}
           <MediaDetailView.Overview>{overview}</MediaDetailView.Overview>
           <MediaDetailView.Overview>
-            Director Some Name
+            {director && (
+              <span className="flex flex-col ">
+                <span className="font-bold">{director.name}</span>
+                <span>{director.job}</span>
+              </span>
+            )}
           </MediaDetailView.Overview>
         </div>
       </MediaDetailView.Hero>
-      <MediaDetailView.Content></MediaDetailView.Content>
+      <MediaDetailView.Content>{children}</MediaDetailView.Content>
     </MediaDetailView.Root>
   );
 }
