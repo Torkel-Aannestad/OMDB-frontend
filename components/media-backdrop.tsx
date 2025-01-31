@@ -25,7 +25,7 @@ export function MediaBackDrop({
     return (
       <div
         className={cn(
-          "size-full rounded-md border bg-muted text-muted-foreground",
+          "size-full rounded-b-md border bg-muted text-muted-foreground",
           className
         )}
         {...props}
@@ -39,7 +39,7 @@ export function MediaBackDrop({
   return (
     <Image
       className={cn(
-        "size-full rounded-md border bg-muted object-cover",
+        "size-full rounded-b-md border bg-muted object-cover",
         className
       )}
       src={src}

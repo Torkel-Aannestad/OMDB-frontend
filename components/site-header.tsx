@@ -14,7 +14,7 @@ import { useActiveNavItem } from "@/hooks/useActiveNavItem";
 
 export function SiteHeader() {
   return (
-    <header className="absolute top-0 z-40 w-full">
+    <header className="block md:absolute top-0 z-40 w-full">
       <Container>
         <div className="flex flex-col items-center sm:flex-row bg-transparent lg:gap-4">
           <Link
@@ -62,12 +62,12 @@ function NavItem({ title, href, icon, className }: NavItem) {
         className && className
       )}
     >
-      <Icon className="h-6 sm:h-4 lg:h-6 lg:mr-2 group-hover:stroke-muted-foreground transition duration-300" />{" "}
+      <Icon className="h-6 sm:h-4 lg:h-6 lg:mr-2 sm:group-hover:stroke-muted-foreground transition duration-300" />{" "}
       <span
         className={cn(
           isActive
             ? "border-foreground sm:border-b"
-            : "sm:border-b sm:border-transparent sm:group-hover:border-muted-foreground group-hover:text-muted-foreground duration-300 "
+            : "sm:border-b sm:border-transparent sm:group-hover:border-muted-foreground sm:group-hover:text-muted-foreground duration-300 "
         )}
       >
         {title}

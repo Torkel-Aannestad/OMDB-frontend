@@ -31,13 +31,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <head />
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
+          "min-h-screen bg-background font-sans antialiased relative flex flex-col",
           geistSans.variable,
           geistMono.variable
         )}
       >
         <SiteHeader />
-        <Container className="relative flex-1 py-4">{children}</Container>
+        <div className=" flex-1 py-4">{children}</div>
         <SiteFooter />
       </body>
     </html>

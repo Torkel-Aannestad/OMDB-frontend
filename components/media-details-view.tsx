@@ -2,6 +2,7 @@ import { cn } from "@/utils/tailwind";
 import { ComponentProps } from "react";
 import { Badge, BadgeProps } from "./ui/badge";
 import { Skeleton } from "./ui/skeleton";
+import { Container } from "./container";
 
 function Root({ className, children, ...props }: ComponentProps<"div">) {
   return (
@@ -13,10 +14,14 @@ function Root({ className, children, ...props }: ComponentProps<"div">) {
 
 function Backdrop({ className, children, ...props }: ComponentProps<"div">) {
   return (
-    <div className={cn("container", className)} {...props}>
-      <div className="md:h-hero relative hidden aspect-poster w-full md:block">
-        {children}
-      </div>
+    <div
+      className={cn(
+        "md:h-hero relative aspect-poster hidden w-full md:block",
+        className
+      )}
+      {...props}
+    >
+      {children}
     </div>
   );
 }
@@ -24,7 +29,7 @@ function Backdrop({ className, children, ...props }: ComponentProps<"div">) {
 function Hero({ className, children, ...props }: ComponentProps<"div">) {
   return (
     <div
-      className={cn("container md:mt-8 md:px-16 xl:mt-12 xl:px-32", className)}
+      className={cn("md:px-16 md:mt-8 xl:mt-12 xl:px-32", className)}
       {...props}
     >
       <div className="grid gap-4 md:grid-cols-[auto,1fr] md:gap-10 xl:gap-16">
@@ -50,15 +55,9 @@ function Poster({ children, className, ...props }: ComponentProps<"div">) {
 
 function Content({ className, children, ...props }: ComponentProps<"div">) {
   return (
-    <div
-      className={cn(
-        "container mt-4 md:mt-8 md:px-16 xl:mt-12 xl:px-32",
-        className
-      )}
-      {...props}
-    >
+    <Container className={cn("mt-4 md:mt-8 xl:mt-12", className)} {...props}>
       {children}
-    </div>
+    </Container>
   );
 }
 
@@ -67,6 +66,9 @@ function Genres({ className, ...props }: ComponentProps<"div">) {
 }
 
 function Genre({ variant = "secondary", ...props }: BadgeProps) {
+  return <Badge variant={variant} {...props} />;
+}
+function Rating({ variant = "secondary", ...props }: BadgeProps) {
   return <Badge variant={variant} {...props} />;
 }
 
@@ -126,6 +128,7 @@ export const MediaDetailView = {
   Poster,
   Genres,
   Genre,
+  Rating,
   Title,
   Overview,
 };
