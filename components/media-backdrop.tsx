@@ -39,7 +39,7 @@ export function MediaBackDrop({
   return (
     <Image
       className={cn(
-        "size-full rounded-b-md border bg-muted object-cover",
+        "size-full rounded-b-md border bg-muted object-cover ",
         className
       )}
       src={src}
