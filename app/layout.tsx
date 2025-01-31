@@ -37,7 +37,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         )}
       >
         <SiteHeader />
-        <div className=" flex-1 py-4">{children}</div>
+        <div className="flex-1">{children}</div>
         <SiteFooter />
       </body>
     </html>
