@@ -1,0 +1,111 @@
+import { cn } from "@/utils/tailwind";
+import { ComponentProps } from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "./ui/card";
+import { UserAvatar } from "./user-avatar";
+import { buttonVariants } from "./ui/button";
+import Link from "next/link";
+import type { Review } from "@/tmdb/models";
+import { tmdbImage } from "@/tmdb/utils";
+import { Badge } from "./ui/badge";
+import { format } from "@/tmdb/utils";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "./ui/collapsible";
+
+type SingleReviewProps = ComponentProps<"div"> & {
+  title: string;
+  link?: string;
+  linkTitle?: string;
+  review: Review;
+  numberOfReviews: number;
+};
+
+function Single({
+  title,
+  link,
+  linkTitle = "See all reviews",
+  review,
+  numberOfReviews,
+  className,
+}: SingleReviewProps) {
+  return (
+    <div className={cn("", className)}>
+      <div className="mb-4 flex items-center justify-between gap-4 md:justify-start">
+        <h2 className="font-medium md:text-lg">
+          {title}{" "}
+          <span className="text-muted-foreground">({numberOfReviews})</span>
+        </h2>
+        {link && (
+          <Link
+            href={link}
+            className={cn(
+              buttonVariants({ size: "sm", variant: "ghost" }),
+              "text-xs"
+            )}
+          >
+            {linkTitle}
+          </Link>
+        )}
+
+        <div className="ml-auto hidden items-center gap-2 md:flex">
+          {/* <Button onClick={previousSlide} size="sm" variant="outline">
+          <ArrowLeft className="size-3" />
+          <span className="sr-only">Previous</span>
+          </Button>
+          <Button onClick={nextSlide} size="sm" variant="outline">
+          <ArrowRight className="size-3" />
+          <span className="sr-only">Next</span>
+          </Button> */}
+        </div>
+      </div>
+      <ReviewCard review={review} />
+    </div>
+  );
+}
+
+type ReviewCardProps = ComponentProps<"div"> & { review: Review };
+function ReviewCard({ review, className, ...props }: ReviewCardProps) {
+  const { author_details, created_at, content } = review;
+  const { name, avatar_path, rating, username } = author_details;
+  const createdDate = format.date(created_at);
+  console.log(`avatar_path: ${avatar_path}`);
+
+  const user = name !== "" ? name : username;
+
+  return (
+    <Card>
+      <CardHeader>
+        <div className="flex items-center gap-2 ">
+          <UserAvatar image={avatar_path} username={user} alt={user} />
+          <div className="flex flex-col gap-2">
+            <CardTitle>{user}</CardTitle>
+            <CardDescription className="flex items-center gap-2">
+              {rating && (
+                <Badge
+                  className="hover:bg-secondary"
+                  variant={"secondary"}
+                >{`Rating ${rating * 10}%`}</Badge>
+              )}
+              <p>{createdDate}</p>
+            </CardDescription>
+          </div>
+        </div>
+      </CardHeader>
+      <CardContent className="whitespace-pre-line text-sm ">
+        {content}
+      </CardContent>
+    </Card>
+  );
+}
+
+export const Reviews = {
+  Single,
+};
