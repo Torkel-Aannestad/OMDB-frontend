@@ -28,14 +28,11 @@ function Backdrop({ className, children, ...props }: ComponentProps<"div">) {
 
 function Hero({ className, children, ...props }: ComponentProps<"div">) {
   return (
-    <div
-      className={cn("md:px-16 md:mt-8 xl:mt-12 xl:px-32", className)}
-      {...props}
-    >
+    <Container className={cn("md:mt-8 xl:mt-12 ", className)} {...props}>
       <div className="grid gap-4 md:grid-cols-[auto,1fr] md:gap-10 xl:gap-16">
         {children}
       </div>
-    </div>
+    </Container>
   );
 }
 
