@@ -52,7 +52,13 @@ function Poster({ children, className, ...props }: ComponentProps<"div">) {
 
 function Content({ className, children, ...props }: ComponentProps<"div">) {
   return (
-    <Container className={cn("mt-4 md:mt-8 xl:mt-12", className)} {...props}>
+    <Container
+      className={cn(
+        "mt-4 md:mt-8 xl:mt-12 space-y-4 md:space-y-8 xl:space-y-12",
+        className
+      )}
+      {...props}
+    >
       {children}
     </Container>
   );

@@ -53,6 +53,7 @@ export default async function DetailLayout({
     <MediaDetailView.Root>
       <MediaDetailView.Backdrop>
         <MediaBackDrop alt={title} image={backdrop_path} priority />
+        <div className="overlay-top" />
       </MediaDetailView.Backdrop>
       <MediaDetailView.Hero>
         <MediaDetailView.Poster>

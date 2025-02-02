@@ -8,6 +8,12 @@ export default {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    container: {
+      center: true,
+      screens: {
+        "2xl": "1800px",
+      },
+    },
     extend: {
       aspectRatio: {
         poster: "2 / 3",
