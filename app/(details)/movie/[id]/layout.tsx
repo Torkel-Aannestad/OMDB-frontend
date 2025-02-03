@@ -7,21 +7,24 @@ import { MediaPoster } from "@/components/media-poster";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { format } from "@/tmdb/utils";
+import { MediaTrailerDialog } from "@/components/media-trailer-dialog";
 
-interface DetailLayoutProps {
+type DetailLayoutProps = {
   params: Promise<{ id: string }>;
   children: React.ReactNode;
+};
+
+export async function generateMetadata({ params }: DetailLayoutProps) {
+  const { id } = await params;
+  const { title } = await tmdb.movie.details({
+    id: id,
+  });
+
+  return {
+    title,
+  };
 }
 
-// export async function generateMetadata({ params }: DetailLayoutProps) {
-//   const { title } = await tmdb.movie.details({
-//     id: params.id,
-//   });
-
-//   return {
-//     title,
-//   };
-// }
 export default async function DetailLayout({
   params,
   children,
@@ -43,10 +46,11 @@ export default async function DetailLayout({
     id: id,
   });
 
-  const { crew, cast } = await tmdb.movie.credits({
+  const { crew } = await tmdb.movie.credits({
     id: id,
   });
   const director = crew.find((crew) => crew.job === "Director");
+  const videos = (await tmdb.movie.videos({ id: id })).results;
 
   if (!id) notFound();
   return (
@@ -98,6 +102,9 @@ export default async function DetailLayout({
               </span>
             )}
           </MediaDetailView.Overview>
+          <MediaDetailView.ContentSpacer>
+            <MediaTrailerDialog videos={videos} />
+          </MediaDetailView.ContentSpacer>
         </div>
       </MediaDetailView.Hero>
       <MediaDetailView.Content>{children}</MediaDetailView.Content>

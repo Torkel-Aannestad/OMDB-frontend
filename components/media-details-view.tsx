@@ -94,6 +94,17 @@ function Overview({ className, children, ...props }: ComponentProps<"p">) {
     </p>
   );
 }
+function ContentSpacer({
+  className,
+  children,
+  ...props
+}: ComponentProps<"div">) {
+  return (
+    <div className={cn("mt-4 space-y-4", className)} {...props}>
+      {children}
+    </div>
+  );
+}
 
 export function SkeletonMediaDetail() {
   return (
@@ -134,4 +145,5 @@ export const MediaDetailView = {
   Rating,
   Title,
   Overview,
+  ContentSpacer,
 };
