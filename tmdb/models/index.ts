@@ -6,3 +6,4 @@ export * from "./seasons";
 export * from "./series";
 export * from "./videos";
 export * from "./people";
+export * from "./collections";

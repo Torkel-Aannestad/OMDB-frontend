@@ -4,6 +4,7 @@ import { search } from "./search";
 import { trending } from "./trending";
 import { series } from "./series";
 import { seasons } from "./seasons";
+import { collections } from "./collections";
 
 export const tmdb = {
   movie,
@@ -12,4 +13,5 @@ export const tmdb = {
   trending,
   series,
   seasons,
+  collections,
 };

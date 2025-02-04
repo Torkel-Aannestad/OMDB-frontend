@@ -36,8 +36,8 @@ export default async function Details({ params }: DetailProps) {
         videos={videos}
         posters={posters}
         backdrops={backdrops}
-        link="/"
-        linkTitle="View All Media"
+        // link="/"
+        // linkTitle="View All Media"
       />
     </>
   );
