@@ -87,7 +87,7 @@ function ReviewCard({ review, className, ...props }: ReviewCardProps) {
           </div>
         </div>
       </CardHeader>
-      <CardContent className="whitespace-pre-line text-sm ">
+      <CardContent className="whitespace-pre-line text-muted-foreground max-w-4xl">
         {content}
       </CardContent>
     </Card>

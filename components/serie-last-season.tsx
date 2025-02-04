@@ -53,9 +53,13 @@ export async function SerieLastSeason({
           </Link>
         )}
       </div>
-      <div className="relative w-full h-80 flex ">
+      <div className="relative w-full h-80 flex bg-card rounded-md shadow">
         <div className="relative w-44 sm:w-56 shrink-0">
-          <MediaImages.Poster image={poster_path} alt={lastEpisode.name} />
+          <MediaImages.Poster
+            className="border-none"
+            image={poster_path}
+            alt={lastEpisode.name}
+          />
           {/* <div className="overlay" /> */}
         </div>
         <div className="p-4 md:p-10">
@@ -65,7 +69,7 @@ export async function SerieLastSeason({
               ({format.year(air_date)})
             </span>
           </h2>
-          <div className="my-4 max-w-2xl gap-2 flex">
+          <div className="my-4 gap-2 flex">
             <Badge variant="secondary" className="hover:bg-secondary">
               User Score {seasonScore}%
             </Badge>
