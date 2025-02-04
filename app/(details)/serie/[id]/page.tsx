@@ -8,6 +8,8 @@ import { format } from "@/tmdb/utils";
 import { MediaTrailerDialog } from "@/components/media-trailer-dialog";
 import { MediaImages } from "@/components/media-image";
 import { MovieCollection } from "@/components/movie-collection";
+import { SerieRecommendedCarousel } from "@/components/serie-recommened-carousel";
+import { SerieLastSeason } from "@/components/serie-last-season";
 
 type DetailProps = {
   params: Promise<{ id: string }>;
@@ -16,65 +18,65 @@ export default async function Details({ params }: DetailProps) {
   const { id } = await params;
 
   const {
-    title,
+    name,
     overview,
     genres,
     vote_average,
     backdrop_path,
     poster_path,
-    release_date,
     tagline,
-    runtime,
-    belongs_to_collection,
-  } = await tmdb.movie.details({
+    first_air_date,
+    seasons,
+    last_episode_to_air,
+  } = await tmdb.series.details({
     id: id,
   });
 
-  const { crew } = await tmdb.movie.credits({
+  const { crew } = await tmdb.series.credits({
     id: id,
   });
   const director = crew.find((crew) => crew.job === "Director");
 
-  const { cast } = await tmdb.movie.credits({
+  const { cast } = await tmdb.series.credits({
     id: id,
   });
 
-  const { results } = await tmdb.movie.reviews({
+  const { results } = await tmdb.series.reviews({
     id: id,
   });
   const review = results[0];
   const numberOfReviews = results.length;
 
-  const videos = (await tmdb.movie.videos({ id: id })).results;
+  const videos = (await tmdb.series.videos({ id: id })).results;
 
-  const { posters, backdrops } = await tmdb.movie.images({
+  const { posters, backdrops } = await tmdb.series.images({
     id: id,
   });
 
   const recommendedMoviesSliced = (
-    await tmdb.movie.recommendations({ id: id })
+    await tmdb.series.recommendations({ id: id })
   ).results.slice(0, 20);
 
   return (
     <MediaDetailView.Root>
       <MediaDetailView.Backdrop>
-        <MediaImages.Backdrop alt={title} image={backdrop_path} priority />
+        <MediaImages.Backdrop alt={name} image={backdrop_path} priority />
         <div className="overlay-top" />
       </MediaDetailView.Backdrop>
       <MediaDetailView.Hero>
         <MediaDetailView.Poster>
           <MediaImages.Poster
             image={poster_path}
-            alt={title}
+            alt={name}
             size="w780"
             priority
           />
         </MediaDetailView.Poster>
         <div className="space-y-4">
           <MediaDetailView.Title>
-            {title}{" "}
+            {name}{" "}
             <span className="font-light text-muted-foreground">
-              ({format.year(format.date(release_date))})
+              ({format.year(format.date(first_air_date))})
             </span>
           </MediaDetailView.Title>
           <MediaDetailView.Genres>
@@ -83,9 +85,6 @@ export default async function Details({ params }: DetailProps) {
                 ? `${(vote_average * 10).toFixed(0)}% User Rating`
                 : "N/A"}
             </MediaDetailView.Rating>
-            <MediaDetailView.Genre>
-              {format.runtime(runtime)}
-            </MediaDetailView.Genre>
           </MediaDetailView.Genres>
           <MediaDetailView.Genres>
             {genres?.map((genre) => (
@@ -116,13 +115,19 @@ export default async function Details({ params }: DetailProps) {
       </MediaDetailView.Hero>
       <MediaDetailView.Content>
         <CastCarousel title={"Cast"} items={cast} />
+        <SerieLastSeason
+          id={id}
+          lastEpisode={last_episode_to_air}
+          title={"Last Season"}
+          link={""}
+          linkTitle={""}
+        />
 
         <Reviews.Single
           title="Reviews"
           review={review}
           numberOfReviews={numberOfReviews}
         />
-
         <VideoImageCarousel
           title="Media"
           videos={videos}
@@ -132,16 +137,7 @@ export default async function Details({ params }: DetailProps) {
           // linkTitle="View All Media"
         />
 
-        {belongs_to_collection && (
-          <MovieCollection
-            id={belongs_to_collection.id}
-            title={"Collection"}
-            // link={""}
-            // linkTitle={""}
-          />
-        )}
-
-        <MovieRecommendedCarousel
+        <SerieRecommendedCarousel
           title={"Recommended"}
           items={recommendedMoviesSliced}
         />

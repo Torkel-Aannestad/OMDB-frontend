@@ -67,7 +67,7 @@ type CreatedBy = {
   profile_path: string;
 };
 
-type LastEpisodeToAir = {
+export type LastEpisodeToAir = {
   air_date: string;
   episode_number: number;
   id: number;

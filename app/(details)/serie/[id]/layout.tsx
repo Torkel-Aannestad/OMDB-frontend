@@ -10,12 +10,12 @@ type DetailLayoutProps = {
 
 export async function generateMetadata({ params }: DetailLayoutProps) {
   const { id } = await params;
-  const { title } = await tmdb.movie.details({
+  const { name } = await tmdb.series.details({
     id: id,
   });
 
   return {
-    title,
+    name,
   };
 }
 

@@ -10,7 +10,7 @@ export type SeasonDetails = {
   season_number: number;
 };
 
-type Episode = {
+export type Episode = {
   id: number;
   name: string;
   overview: string;

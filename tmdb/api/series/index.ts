@@ -60,7 +60,7 @@ function similar({ id, page }: SerieSimilarRequestParams) {
   });
 }
 
-function images({ id, langs }: SerieImagesRequestParams) {
+function images({ id, langs = "en,null" }: SerieImagesRequestParams) {
   return api.fetcher<GetImagesResponse>({
     endpoint: `tv/${id}/images`,
     params: {
