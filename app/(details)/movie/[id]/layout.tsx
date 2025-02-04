@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { format } from "@/tmdb/utils";
 import { MediaTrailerDialog } from "@/components/media-trailer-dialog";
 import { MediaImages } from "@/components/media-image";
+import { MovieCollection } from "@/components/movie-collection";
 
 type DetailLayoutProps = {
   params: Promise<{ id: string }>;
@@ -32,12 +33,12 @@ export default async function DetailLayout({
     overview,
     genres,
     vote_average,
-    vote_count,
     backdrop_path,
     poster_path,
     release_date,
     tagline,
     runtime,
+    belongs_to_collection,
   } = await tmdb.movie.details({
     id: id,
   });
@@ -52,7 +53,7 @@ export default async function DetailLayout({
   return (
     <MediaDetailView.Root>
       <MediaDetailView.Backdrop>
-        <MediaImages.BackDrop alt={title} image={backdrop_path} priority />
+        <MediaImages.Backdrop alt={title} image={backdrop_path} priority />
         <div className="overlay-top" />
       </MediaDetailView.Backdrop>
       <MediaDetailView.Hero>
@@ -109,6 +110,16 @@ export default async function DetailLayout({
         </div>
       </MediaDetailView.Hero>
       <MediaDetailView.Content>{children}</MediaDetailView.Content>
+      {belongs_to_collection && (
+        <MediaDetailView.Content>
+          <MovieCollection
+            id={belongs_to_collection.id}
+            title={"Collection"}
+            // link={""}
+            // linkTitle={""}
+          />
+        </MediaDetailView.Content>
+      )}
     </MediaDetailView.Root>
   );
 }

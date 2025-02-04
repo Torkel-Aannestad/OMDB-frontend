@@ -59,7 +59,7 @@ type MediaBackDropProps = ComponentProps<"div"> & {
   priority?: boolean;
 };
 
-function BackDrop({
+function Backdrop({
   image,
   size = "original",
   alt,
@@ -86,10 +86,7 @@ function BackDrop({
   }
   return (
     <Image
-      className={cn(
-        "size-full rounded-b-md border bg-muted object-cover ",
-        className
-      )}
+      className={cn(" rounded-b-md border bg-muted object-cover ", className)}
       src={src}
       alt={alt}
       priority={priority}
@@ -139,4 +136,4 @@ function VideoThumbnail({
   );
 }
 
-export const MediaImages = { Poster, BackDrop };
+export const MediaImages = { Poster, Backdrop };

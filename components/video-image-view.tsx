@@ -267,7 +267,7 @@ function BackdropCardDialogExpand({
       <Dialog modal>
         <MediaCard.Root className="w-full aspect-video">
           <DialogTrigger className="transition group">
-            <MediaImages.BackDrop
+            <MediaImages.Backdrop
               image={filePath}
               className="rounded-md"
               alt="Backdrop image"
