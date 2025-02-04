@@ -11,14 +11,8 @@ import { UserAvatar } from "./user-avatar";
 import { buttonVariants } from "./ui/button";
 import Link from "next/link";
 import type { Review } from "@/tmdb/models";
-import { tmdbImage } from "@/tmdb/utils";
 import { Badge } from "./ui/badge";
 import { format } from "@/tmdb/utils";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "./ui/collapsible";
 
 type SingleReviewProps = ComponentProps<"div"> & {
   title: string;
@@ -54,17 +48,6 @@ function Single({
             {linkTitle}
           </Link>
         )}
-
-        <div className="ml-auto hidden items-center gap-2 md:flex">
-          {/* <Button onClick={previousSlide} size="sm" variant="outline">
-          <ArrowLeft className="size-3" />
-          <span className="sr-only">Previous</span>
-          </Button>
-          <Button onClick={nextSlide} size="sm" variant="outline">
-          <ArrowRight className="size-3" />
-          <span className="sr-only">Next</span>
-          </Button> */}
-        </div>
       </div>
       <ReviewCard review={review} />
     </div>
@@ -76,7 +59,6 @@ function ReviewCard({ review, className, ...props }: ReviewCardProps) {
   const { author_details, created_at, content } = review;
   const { name, avatar_path, rating, username } = author_details;
   const createdDate = format.date(created_at);
-  console.log(`avatar_path: ${avatar_path}`);
 
   const user = name !== "" ? name : username;
 
