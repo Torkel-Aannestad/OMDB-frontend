@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Cast, Person } from "@/tmdb/models";
 
 import { MediaCard } from "@/components/media-card";
-import { MediaPoster } from "@/components/media-poster";
+import { MediaImages } from "./media-image";
 
 export function PersonCard({
   id,
@@ -15,7 +15,7 @@ export function PersonCard({
     <Link href={`/person/${id}`} key={id} className="w-full" prefetch={false}>
       <MediaCard.Root>
         <MediaCard.Content>
-          <MediaPoster image={profile_path} alt={name} />
+          <MediaImages.Poster image={profile_path} alt={name} />
           <MediaCard.Title className="mt-2">{name}</MediaCard.Title>
 
           <MediaCard.Excerpt>

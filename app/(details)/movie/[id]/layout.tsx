@@ -1,13 +1,9 @@
-import Image from "next/image";
 import { MediaDetailView } from "@/components/media-details-view";
 import { tmdb } from "@/tmdb/api";
 import { notFound } from "next/navigation";
-import { MediaBackDrop } from "@/components/media-backdrop";
-import { MediaPoster } from "@/components/media-poster";
-import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
 import { format } from "@/tmdb/utils";
 import { MediaTrailerDialog } from "@/components/media-trailer-dialog";
+import { MediaImages } from "@/components/media-image";
 
 type DetailLayoutProps = {
   params: Promise<{ id: string }>;
@@ -56,12 +52,17 @@ export default async function DetailLayout({
   return (
     <MediaDetailView.Root>
       <MediaDetailView.Backdrop>
-        <MediaBackDrop alt={title} image={backdrop_path} priority />
+        <MediaImages.BackDrop alt={title} image={backdrop_path} priority />
         <div className="overlay-top" />
       </MediaDetailView.Backdrop>
       <MediaDetailView.Hero>
         <MediaDetailView.Poster>
-          <MediaPoster image={poster_path} alt={title} size="w780" priority />
+          <MediaImages.Poster
+            image={poster_path}
+            alt={title}
+            size="w780"
+            priority
+          />
         </MediaDetailView.Poster>
         <div className="space-y-4">
           <MediaDetailView.Title>
