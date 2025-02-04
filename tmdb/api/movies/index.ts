@@ -60,7 +60,7 @@ function similar({ id, page }: MovieSimilarRequestParams) {
   });
 }
 
-function images({ id, langs }: MovieImagesRequestParams) {
+function images({ id, langs = "en,null" }: MovieImagesRequestParams) {
   return api.fetcher<GetImagesResponse>({
     endpoint: `movie/${id}/images`,
     params: {
