@@ -114,11 +114,21 @@ export function VideoImageCarousel({
       </div>
       <div>
         {currentType === "posters" ? (
-          <PostersCarousel posters={postersSliced} />
+          postersSliced.length > 0 ? (
+            <PostersCarousel posters={postersSliced} />
+          ) : (
+            <EmptyState text="No posters to show" />
+          )
         ) : currentType === "backdrops" ? (
-          <BackdropsCarousel backdrops={backdropsSliced} />
-        ) : (
+          backdropsSliced.length > 0 ? (
+            <BackdropsCarousel backdrops={backdropsSliced} />
+          ) : (
+            <EmptyState text="No backdrops to show" />
+          )
+        ) : videosSliced.length > 0 ? (
           <VideosCarousel videos={videosSliced} />
+        ) : (
+          <EmptyState text="No videos to show" />
         )}
       </div>
     </Carousel>
@@ -183,10 +193,10 @@ function BackdropsCarousel({ backdrops }: BackdropsCarouselProps) {
   );
 }
 
-type PosterCardProps = ComponentProps<"div"> & {
+type ImageCardProps = ComponentProps<"div"> & {
   filePath: string;
 };
-function PosterCard({ filePath, className, ...props }: PosterCardProps) {
+function PosterCard({ filePath, className, ...props }: ImageCardProps) {
   return (
     <div className={cn("", className)} {...props}>
       <Link href={`/`} key={filePath}>
@@ -198,7 +208,7 @@ function PosterCard({ filePath, className, ...props }: PosterCardProps) {
   );
 }
 
-function BackdropCard({ filePath, className, ...props }: PosterCardProps) {
+function BackdropCard({ filePath, className, ...props }: ImageCardProps) {
   return (
     <div className={cn("", className)} {...props}>
       <Link href={`/`} className={cn("", className)}>
@@ -210,6 +220,30 @@ function BackdropCard({ filePath, className, ...props }: PosterCardProps) {
           />
         </MediaCard.Root>
       </Link>
+    </div>
+  );
+}
+
+type EmptyStateProps = ComponentProps<"div"> & {
+  text: string;
+};
+function EmptyState({
+  text = "No Records to show",
+  className,
+  ...props
+}: EmptyStateProps) {
+  return (
+    <div className={cn("", className)} {...props}>
+      <MediaCard.Root
+        className={cn(
+          "h-56 w-full rounded-md border bg-muted  ",
+          "bg-gradient-to-tr from-background/25"
+        )}
+      >
+        <div className="flex items-center justify-center gap-2 size-full text-muted-foreground">
+          {text}
+        </div>
+      </MediaCard.Root>
     </div>
   );
 }
