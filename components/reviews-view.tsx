@@ -13,6 +13,8 @@ import Link from "next/link";
 import type { Review } from "@/tmdb/models";
 import { Badge } from "./ui/badge";
 import { format } from "@/tmdb/utils";
+import { Divide, ReceiptPoundSterling } from "lucide-react";
+import { EmptyStateCard } from "./empty-state-card";
 
 type SingleReviewProps = ComponentProps<"div"> & {
   title: string;
@@ -37,7 +39,7 @@ function Single({
           {title}{" "}
           <span className="text-muted-foreground">({numberOfReviews})</span>
         </h2>
-        {link && (
+        {link && review && (
           <Link
             href={link}
             className={cn(
@@ -49,7 +51,11 @@ function Single({
           </Link>
         )}
       </div>
-      <ReviewCard review={review} />
+      {review ? (
+        <ReviewCard review={review} />
+      ) : (
+        <EmptyStateCard text="Currently no reviews" />
+      )}
     </div>
   );
 }
@@ -83,6 +89,15 @@ function ReviewCard({ review, className, ...props }: ReviewCardProps) {
       </CardHeader>
       <CardContent className="whitespace-pre-line text-sm ">
         {content}
+      </CardContent>
+    </Card>
+  );
+}
+function ReviewCardEmtpyState() {
+  return (
+    <Card>
+      <CardContent className="whitespace-pre-line text-sm ">
+        no reviews
       </CardContent>
     </Card>
   );
