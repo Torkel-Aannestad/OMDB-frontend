@@ -16,7 +16,7 @@ function Backdrop({ className, children, ...props }: ComponentProps<"div">) {
   return (
     <div
       className={cn(
-        "md:h-hero relative aspect-poster hidden w-full md:block",
+        "md:h-hero relative aspect-video hidden w-full md:block",
         className
       )}
       {...props}
