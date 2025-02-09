@@ -106,7 +106,16 @@ body {
     @apply absolute inset-0 border rounded-md flex items-end bg-gradient-to-tr from-background/95;
   }
   .overlay-top {
-    @apply absolute inset-0 rounded-md flex items-end  bg-gradient-to-b from-background to-30%;
+    @apply absolute inset-0  flex items-end bg-gradient-to-b from-background to-30%;
+  }
+  .overlay-hero-top {
+    @apply absolute inset-0  flex items-end bg-gradient-to-b from-background/85 sm:from-background/95 from-15% sm:from-0% to-30%;
+  }
+  .overlay-bottom {
+    @apply absolute inset-0 flex items-end bg-gradient-to-t from-background/95 to-transparent to-40%;
+  }
+  .overlay-hero-bottom {
+    @apply absolute inset-0 flex items-end bg-gradient-to-t  from-background/90 to-background/25 from-15% to-40%;
   }
   .empty-box {
     @apply flex h-32 items-center justify-center rounded-lg border border-dashed text-muted-foreground;

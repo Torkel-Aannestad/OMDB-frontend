@@ -69,6 +69,7 @@ export default async function Details({ params }: DetailProps) {
             size="w780"
             priority
           />
+          <div className="overlay-hero-top md:hidden" />
         </MediaDetailView.Poster>
         <div className="space-y-4">
           <MediaDetailView.Title>
