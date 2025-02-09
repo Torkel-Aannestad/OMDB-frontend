@@ -1,5 +1,4 @@
 import { CastCarousel } from "@/components/cast-carousel";
-import { MovieRecommendedCarousel } from "@/components/movie-recommened-carousel";
 import { Reviews } from "@/components/reviews-view";
 import { VideoImageCarousel } from "@/components/video-image-view";
 import { MediaDetailView } from "@/components/media-details-view";
@@ -7,7 +6,6 @@ import { tmdb } from "@/tmdb/api";
 import { format } from "@/tmdb/utils";
 import { MediaTrailerDialog } from "@/components/media-trailer-dialog";
 import { MediaImages } from "@/components/media-image";
-import { MovieCollection } from "@/components/movie-collection";
 import { SerieRecommendedCarousel } from "@/components/serie-recommened-carousel";
 import { SerieLastSeason } from "@/components/serie-last-season";
 
