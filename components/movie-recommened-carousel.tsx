@@ -14,6 +14,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import { MovieCard } from "./movie-card";
+import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 
 type CarouselProps = {
   title: string;
@@ -41,7 +42,11 @@ export function MovieRecommendedCarousel({
   }
 
   return (
-    <Carousel opts={{ dragFree: true }} setApi={setApi}>
+    <Carousel
+      opts={{ dragFree: true }}
+      setApi={setApi}
+      plugins={[WheelGesturesPlugin()]}
+    >
       <div className="mb-4 flex items-center justify-between gap-4 md:justify-start">
         <h2 className="font-medium md:text-lg">{title}</h2>
 

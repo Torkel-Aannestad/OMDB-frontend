@@ -15,6 +15,9 @@ import {
 } from "@/components/ui/carousel";
 import { MovieCard } from "./movie-card";
 import { SerieCard } from "./serie-card";
+import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
+import { MediaCard } from "./media-card";
+import { MediaImages } from "./media-image";
 
 type CarouselProps = {
   title: string;
@@ -42,7 +45,11 @@ export function SerieRecommendedCarousel({
   }
 
   return (
-    <Carousel opts={{ dragFree: true }} setApi={setApi}>
+    <Carousel
+      opts={{ dragFree: true }}
+      setApi={setApi}
+      plugins={[WheelGesturesPlugin()]}
+    >
       <div className="mb-4 flex items-center justify-between gap-4 md:justify-start">
         <h2 className="font-medium md:text-lg">{title}</h2>
 
@@ -85,5 +92,24 @@ export function SerieRecommendedCarousel({
         ))}
       </CarouselContent>
     </Carousel>
+  );
+}
+
+type SerieCardWithNumberProps = Serie & {
+  number: number;
+};
+function SerieCardWithNumber({
+  id,
+  poster_path,
+  name,
+  number,
+}: SerieCardWithNumberProps) {
+  return (
+    <Link href={`/movie/${id}`} key={id} prefetch={false}>
+      <MediaCard.Root className="grid grid-cols-[auto,1fr] ">
+        <div>{number}</div>
+        <MediaImages.Poster image={poster_path} alt={name} />
+      </MediaCard.Root>
+    </Link>
   );
 }

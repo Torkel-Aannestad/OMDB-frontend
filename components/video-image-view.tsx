@@ -28,6 +28,7 @@ import { yt } from "@/tmdb/utils/youtube";
 import NextImage from "next/image";
 import { tmdbImage } from "@/tmdb/utils";
 import { EmptyStateCard } from "./empty-state-card";
+import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 
 type CarouselProps = {
   title: string;
@@ -67,7 +68,11 @@ export function VideoImageCarousel({
   }
 
   return (
-    <Carousel opts={{ dragFree: true }} setApi={setApi}>
+    <Carousel
+      opts={{ dragFree: true }}
+      setApi={setApi}
+      plugins={[WheelGesturesPlugin()]}
+    >
       <h2 className="font-medium md:text-lg">{title}</h2>
       <div className=" my-4 flex items-center justify-between gap-4 md:justify-start">
         <Tabs>
