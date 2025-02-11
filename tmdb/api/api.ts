@@ -43,7 +43,7 @@ const fetcher: Fetcher = async ({ endpoint, params }, init?) => {
 
   const _init = {
     ...init,
-    next: { revalidate: 600, ...init?.next },
+    next: { cache: "force-cache", revalidate: 3600, ...init?.next },
     headers: _headers,
   };
 
