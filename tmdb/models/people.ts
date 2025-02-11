@@ -1,5 +1,6 @@
 import { Movie } from "./movies";
 import { Serie } from "./series";
+import { WithMediaType } from "./shared";
 
 export type Person = {
   id: number;
@@ -12,6 +13,7 @@ export type Person = {
   known_for: Array<Movie | Serie>;
   adult: boolean;
 };
+export type PersonWithMediaType = WithMediaType<Person, "person">;
 
 export type PersonDetails = {
   id: number;

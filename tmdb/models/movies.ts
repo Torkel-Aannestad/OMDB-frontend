@@ -3,6 +3,7 @@ import {
   ProductionCompany,
   ProductionCountry,
   SpokenLanguage,
+  WithMediaType,
 } from "./shared";
 
 export type Movie = {
@@ -21,6 +22,8 @@ export type Movie = {
   video: boolean;
   adult: boolean;
 };
+
+export type MovieWithMediaType = WithMediaType<Movie, "movie">;
 
 export type MovieDetails = {
   id: number;

@@ -3,6 +3,7 @@ import {
   ProductionCompany,
   ProductionCountry,
   SpokenLanguage,
+  WithMediaType,
 } from "./shared";
 
 export type Serie = {
@@ -22,6 +23,8 @@ export type Serie = {
   vote_count: number;
   adult: boolean;
 };
+
+export type SerieWithMediaType = WithMediaType<Serie, "serie">;
 
 export type SerieDetails = {
   adult: false;

@@ -1,11 +1,20 @@
-import { Movie, Serie } from "@/tmdb/models";
+import {
+  Movie,
+  MovieWithMediaType,
+  Person,
+  PersonWithMediaType,
+  Serie,
+  SerieWithMediaType,
+} from "@/tmdb/models";
 
 import { api } from "../api";
 import { ListResponse } from "../types";
 import { SearchRequestParams } from "./types";
 
 function multi({ query, page = "1" }: SearchRequestParams) {
-  return api.fetcher<ListResponse<Movie | Serie>>({
+  return api.fetcher<
+    ListResponse<MovieWithMediaType | SerieWithMediaType | PersonWithMediaType>
+  >({
     endpoint: "/search/multi",
     params: {
       query,
