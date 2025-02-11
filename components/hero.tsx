@@ -9,16 +9,16 @@ import {
 } from "./ui/carousel";
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { GeneralMediaItem } from "@/tmdb/models/trending";
 import Image from "next/image";
 import { tmdbImage } from "@/tmdb/utils";
 import { cn } from "@/utils/tailwind";
 import { Container } from "./container";
 import Link from "next/link";
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
+import { MovieWithMediaType, SerieWithMediaType } from "@/tmdb/models";
 
 type HeroProps = {
-  trendingMedia: GeneralMediaItem[];
+  trendingMedia: Array<MovieWithMediaType | SerieWithMediaType>;
 };
 export function Hero({ trendingMedia }: HeroProps) {
   const [api, setApi] = useState<CarouselApi>();

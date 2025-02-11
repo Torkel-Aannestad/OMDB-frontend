@@ -20,7 +20,7 @@ export function SiteHeader() {
           <Link
             href="/"
             className={cn(
-              "self-start inline-flex cursor-pointer items-center px-1 text-2xl lg:text-3xl font-bold text-foreground py-2 mt-1 sm:my-8 sm:pr-8",
+              "self-start inline-flex cursor-pointer items-center  text-2xl lg:text-3xl font-bold text-foreground py-2 mt-1 sm:my-8 sm:pr-8",
               "sm:hover:text-muted-foreground duration-300"
             )}
           >
