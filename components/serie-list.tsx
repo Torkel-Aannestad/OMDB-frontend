@@ -1,23 +1,24 @@
 import { Container } from "./container";
 import { ListPagination } from "./list-pagination";
 import { MovieCard } from "./movie-card";
-import { Movie } from "@/tmdb/models";
+import { Movie, Serie } from "@/tmdb/models";
+import { SerieCard } from "./serie-card";
 
-type MovieListProps = {
+type SerieListProps = {
   title?: string;
   description?: string;
-  items: Movie[];
+  items: Serie[];
   currentPage: number;
   totalPages: number;
 };
 
-export function MovieList({
+export function SerieList({
   title,
   description,
   items,
   currentPage,
   totalPages,
-}: MovieListProps) {
+}: SerieListProps) {
   return (
     <div className="space-y-8">
       <div>List navigation here</div>
@@ -27,7 +28,7 @@ export function MovieList({
 
       <div className="grid-list">
         {items.map((item) => {
-          return <MovieCard key={item.id} {...item} />;
+          return <SerieCard key={item.id} {...item} />;
         })}
       </div>
 
