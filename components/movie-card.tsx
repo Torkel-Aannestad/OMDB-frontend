@@ -11,7 +11,7 @@ export function MovieCard({
   release_date,
 }: Movie) {
   return (
-    <Link href={`/movie/${id}`} key={id}>
+    <Link href={`/movies/${id}`} key={id}>
       <MediaCard.Root>
         <MediaImages.Poster image={poster_path} alt={title} />
       </MediaCard.Root>

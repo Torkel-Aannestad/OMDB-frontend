@@ -1,5 +1,5 @@
-import { cn } from "@/utils/tailwind"
-import { buttonVariants } from "@/components/ui/button"
+import { cn } from "@/utils/tailwind";
+import { buttonVariants } from "@/components/ui/button";
 
 export default function NotFound() {
   return (
@@ -19,5 +19,5 @@ export default function NotFound() {
         </a>
       </div>
     </div>
-  )
+  );
 }

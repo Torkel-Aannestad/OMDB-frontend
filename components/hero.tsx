@@ -98,8 +98,8 @@ export function Hero({ trendingMedia }: HeroProps) {
                       <Link
                         href={
                           item.media_type === "movie"
-                            ? `/movie/${item.id}`
-                            : `/serie/${item.id}`
+                            ? `/movies/${item.id}`
+                            : `/series/${item.id}`
                         }
                         className={cn(buttonVariants())}
                       >

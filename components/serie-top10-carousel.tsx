@@ -83,7 +83,7 @@ function SerieCardWithNumber({
   number,
 }: SerieCardWithNumberProps) {
   return (
-    <Link href={`/movie/${id}`} key={id} prefetch={false} className="group">
+    <Link href={`/series/${id}`} key={id} prefetch={false} className="group">
       <div className="grid grid-cols-[auto,1fr]">
         <div className="w-16 flex items-end font-bold text-8xl text-muted-foreground ">
           <span

@@ -83,7 +83,7 @@ function MovieCardWithNumber({
   number,
 }: MovieCardWithNumberProps) {
   return (
-    <Link href={`/movie/${id}`} key={id} prefetch={false} className="group">
+    <Link href={`/movies/${id}`} key={id} prefetch={false} className="group">
       <div className="grid grid-cols-[auto,1fr]">
         <div className="w-16 flex items-end font-bold text-8xl text-muted-foreground ">
           <span
