@@ -16,6 +16,7 @@ import { Container } from "./container";
 import Link from "next/link";
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 import { MovieWithMediaType, SerieWithMediaType } from "@/tmdb/models";
+import { Icons } from "./icons";
 
 type HeroProps = {
   trendingMedia: Array<MovieWithMediaType | SerieWithMediaType>;
@@ -63,13 +64,23 @@ export function Hero({ trendingMedia }: HeroProps) {
                   "aspect-poster md:aspect-video"
                 )}
               >
-                <Image
-                  alt=""
-                  className="size-full object-center object-cover rounded-none "
-                  src={tmdbImage.backdrop(item.backdrop_path, "original")}
-                  priority
-                  fill
-                />
+                {item.backdrop_path ? (
+                  <Image
+                    alt=""
+                    className="size-full object-center object-cover rounded-none "
+                    src={tmdbImage.backdrop(item.backdrop_path, "original")}
+                    priority
+                    fill
+                  />
+                ) : (
+                  <div
+                    className={cn("size-full bg-muted text-muted-foreground")}
+                  >
+                    <div className="flex items-center justify-center size-full">
+                      <Icons.Logo className="size-12" />
+                    </div>
+                  </div>
+                )}
                 <div className={cn("overlay-hero-top rounded-none ")} />
                 <div className={cn("overlay-hero-bottom ")} />
               </div>
