@@ -10,7 +10,7 @@ import { ListResponse } from "../types";
 import { TrendingRequestParams } from "./types";
 
 function movies({ time, page = "1" }: TrendingRequestParams) {
-  return api.fetcher<ListResponse<Movie>>({
+  return api.fetcher<ListResponse<MovieWithMediaType>>({
     endpoint: `trending/movie/${time}`,
     params: {
       page,
@@ -19,7 +19,7 @@ function movies({ time, page = "1" }: TrendingRequestParams) {
 }
 
 function series({ time, page = "1" }: TrendingRequestParams) {
-  return api.fetcher<ListResponse<Serie>>({
+  return api.fetcher<ListResponse<SerieWithMediaType>>({
     endpoint: `trending/tv/${time}`,
     params: {
       page,
