@@ -1,5 +1,4 @@
-import { MovieList } from "@/components/movie-list";
-import { SerieList } from "@/components/serie-list";
+import { MediaListView } from "@/components/media-list-view";
 import { tmdb } from "@/tmdb/api";
 import { notFound } from "next/navigation";
 
@@ -20,11 +19,13 @@ export default async function TopRated({ searchParams }: Props) {
   }
 
   return (
-    <SerieList
-      title="Top Rated"
-      items={results}
+    <MediaListView
+      title={"Top Rated"}
+      series={results}
       currentPage={page}
       totalPages={total_pages}
+      showListOptions={true}
+      showCatgeoryOptions={true}
     />
   );
 }

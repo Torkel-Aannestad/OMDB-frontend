@@ -8,8 +8,8 @@ type PopularProps = {
 
 export default async function Popular({ searchParams }: PopularProps) {
   const params = await searchParams;
-  //   const pageQuery = page ?? "1";
-  const { results, total_pages, page } = await tmdb.movie.list({
+
+  const { results, total_pages, page } = await tmdb.series.list({
     list: "popular",
     page: params.page,
   });
@@ -21,7 +21,7 @@ export default async function Popular({ searchParams }: PopularProps) {
   return (
     <MediaListView
       title={"Popular"}
-      movies={results}
+      series={results}
       currentPage={page}
       totalPages={total_pages}
       showListOptions={true}

@@ -1,4 +1,5 @@
 "use client";
+
 import { cn } from "@/utils/tailwind";
 import {
   LucideIcon,
@@ -7,6 +8,7 @@ import {
   Search,
   LayoutGrid,
   HomeIcon,
+  Home,
 } from "lucide-react";
 import Link from "next/link";
 import { Container } from "./container";
@@ -44,14 +46,15 @@ export function SiteHeader() {
   );
 }
 
-type NavItem = {
+type NavItemProps = {
   title: string;
   href: string;
+  items?: NavItemProps[];
   icon: LucideIcon;
   className?: string;
 };
 
-function NavItem({ title, href, icon, className }: NavItem) {
+function NavItem({ title, href, icon, className }: NavItemProps) {
   const isActive = useActiveNavItem(href);
   const Icon = icon;
   return (

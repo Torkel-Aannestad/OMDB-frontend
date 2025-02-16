@@ -5,6 +5,7 @@ import { trending } from "./trending";
 import { series } from "./series";
 import { seasons } from "./seasons";
 import { collections } from "./collections";
+import { discover } from "./discover";
 
 export const tmdb = {
   movie,
@@ -14,4 +15,5 @@ export const tmdb = {
   series,
   seasons,
   collections,
+  discover,
 };
