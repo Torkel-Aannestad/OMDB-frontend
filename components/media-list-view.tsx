@@ -1,14 +1,11 @@
 "use client";
 import { ListPagination } from "./list-pagination";
 import { MovieCard } from "./movie-card";
-import {
-  Movie,
-  MovieWithMediaType,
-  Serie,
-  SerieWithMediaType,
-} from "@/tmdb/models";
+import { Movie, Serie } from "@/tmdb/models";
 import { MediaListNav } from "./media-list-nav";
 import { SerieCard } from "./serie-card";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 
 type MediaListProps = {
   title?: string;
@@ -19,6 +16,8 @@ type MediaListProps = {
   totalPages: number;
   showListOptions?: boolean;
   showCatgeoryOptions?: boolean;
+  backButtonHref?: string;
+  backButtonText?: string;
 };
 
 export function MediaListView({
@@ -29,9 +28,21 @@ export function MediaListView({
   totalPages,
   showListOptions = false,
   showCatgeoryOptions = false,
+  backButtonHref,
+  backButtonText,
 }: MediaListProps) {
   return (
-    <div className="space-y-8">
+    <div className=" space-y-8">
+      {backButtonHref && (
+        <div className="relative h-6 px-2">
+          <Link className="absolute group transition " href={backButtonHref}>
+            <div className="flex items-center text-xs text-secondary-foreground group-hover:text-foreground">
+              <ArrowLeft className="size-3 group-hover:-translate-x-1 duration-300" />
+              {backButtonText ? backButtonText : "Back"}
+            </div>
+          </Link>
+        </div>
+      )}
       {showListOptions && (
         <MediaListNav.Main>
           <MediaListNav.List>

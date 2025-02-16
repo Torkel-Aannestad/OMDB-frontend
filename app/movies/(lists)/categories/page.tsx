@@ -30,6 +30,8 @@ export default async function Categories({ searchParams }: CategoriesProps) {
       totalPages={total_pages}
       showListOptions={true}
       showCatgeoryOptions={true}
+      backButtonHref="/movies"
+      backButtonText="Back to Movies"
     />
   );
 }

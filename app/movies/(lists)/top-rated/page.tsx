@@ -25,7 +25,9 @@ export default async function TopRated({ searchParams }: Props) {
       currentPage={page}
       totalPages={total_pages}
       showListOptions={true}
-      showCatgeoryOptions={true}
+      showCatgeoryOptions={false}
+      backButtonHref="/movies"
+      backButtonText="Back to Movies"
     />
   );
 }

@@ -25,7 +25,9 @@ export default async function Popular({ searchParams }: PopularProps) {
       currentPage={page}
       totalPages={total_pages}
       showListOptions={true}
-      showCatgeoryOptions={true}
+      showCatgeoryOptions={false}
+      backButtonHref="/series"
+      backButtonText="Back to Series"
     />
   );
 }

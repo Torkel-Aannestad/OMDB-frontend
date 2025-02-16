@@ -11,7 +11,7 @@ import { movieCategories, serieCategories } from "@/tmdb/utils/categories";
 import { ScrollArea, ScrollBar } from "./ui/scroll-area";
 
 function Main({ className, ...props }: ComponentProps<"div">) {
-  return <div className={cn("flex flex-col gap-2", className)} {...props} />;
+  return <div className={cn("flex flex-col gap-1", className)} {...props} />;
 }
 
 function List({ className, ...props }: ComponentProps<"div">) {
