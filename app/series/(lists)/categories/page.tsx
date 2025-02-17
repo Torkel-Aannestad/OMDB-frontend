@@ -1,6 +1,6 @@
 import { MediaListView } from "@/components/media-list-view";
 import { tmdb } from "@/tmdb/api";
-import { movieCategories } from "@/tmdb/utils/categories";
+import { movieCategories, serieCategories } from "@/tmdb/utils/categories";
 import { notFound } from "next/navigation";
 
 type CategoriesProps = {
@@ -18,7 +18,7 @@ export default async function Categories({ searchParams }: CategoriesProps) {
     return notFound();
   }
 
-  const categoryFound = movieCategories.find(
+  const categoryFound = serieCategories.find(
     (cat) => cat.id.toString() === params.with_genres
   );
 
