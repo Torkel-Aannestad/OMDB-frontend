@@ -22,7 +22,7 @@ type CarouselProps = {
   link?: string;
   linkTitle?: string;
   size?: "small" | "medium";
-  items: MovieWithMediaType[] | SerieWithMediaType[];
+  items: Array<MovieWithMediaType | SerieWithMediaType>;
 };
 
 export function MediaCarousel({
@@ -49,7 +49,7 @@ export function MediaCarousel({
       plugins={[WheelGesturesPlugin()]}
     >
       <div className="mb-4 flex items-center justify-between gap-4 md:justify-start">
-        <h2 className="font-medium md:text-xl">{title}</h2>
+        <h2 className="font-medium md:text-lg">{title}</h2>
 
         <div className="ml-auto hidden items-center gap-2 md:flex">
           {link && (
