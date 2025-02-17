@@ -1,4 +1,6 @@
-export const movieCategories = [
+import { Genre } from "../models/shared";
+
+export const movieCategories = <Array<Genre>>[
   {
     id: 28,
     name: "Action",
@@ -77,7 +79,7 @@ export const movieCategories = [
   },
 ];
 
-export const serieCategories = [
+export const serieCategories = <Array<Genre>>[
   {
     id: 10759,
     name: "Action & Adventure",
@@ -143,3 +145,8 @@ export const serieCategories = [
     name: "Western",
   },
 ];
+
+export function getRandomCategory(categoryArray: Genre[]) {
+  const randomIndex = Math.floor(Math.random() * categoryArray.length);
+  return categoryArray[randomIndex];
+}

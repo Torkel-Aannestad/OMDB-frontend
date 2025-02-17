@@ -35,9 +35,9 @@ export function SiteHeader() {
               icon={HomeIcon}
               className="inline-flex sm:hidden"
             />
-            <NavItem title="Categories" href="/categories" icon={LayoutGrid} />
             <NavItem title="Movies" href="/movies" icon={ClapperboardIcon} />
             <NavItem title="Series" href="/series" icon={TvIcon} />
+            {/* <NavItem title="Discover" href="/discover" icon={LayoutGrid} /> */}
             <NavItem title="Search" href="/search" icon={Search} />
           </div>
         </div>

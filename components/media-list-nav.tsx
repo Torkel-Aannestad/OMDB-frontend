@@ -47,7 +47,7 @@ function Categories({ media_type }: CategoriesProps) {
               />
             ))}
       </div>
-      <ScrollBar orientation="horizontal" />
+      <ScrollBar orientation="horizontal" className="h-2 cursor-grab" />
     </ScrollArea>
   );
 }
