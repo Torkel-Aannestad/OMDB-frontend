@@ -19,21 +19,20 @@ import { MovieWithMediaType, SerieWithMediaType } from "@/tmdb/models";
 import { Icons } from "./icons";
 
 type HeroProps = {
-  trendingMedia: Array<MovieWithMediaType | SerieWithMediaType>;
+  items: Array<MovieWithMediaType | SerieWithMediaType>;
+  startIndex: number;
 };
-export function Hero({ trendingMedia }: HeroProps) {
+export function Hero({ items, startIndex = 0 }: HeroProps) {
   const [api, setApi] = useState<CarouselApi>();
-  const [current, setCurrent] = useState(0);
-  // const [count, setCount] = useState(0);
+  const [current, setCurrent] = useState(startIndex);
 
-  const trendingMediaSliced = trendingMedia.slice(0, 6);
+  const mediaSliced = items.slice(startIndex, startIndex + 6);
 
   useEffect(() => {
     if (!api) {
       return;
     }
 
-    // setCount(api.scrollSnapList().length);
     setCurrent(api.selectedScrollSnap() + 1);
   }, [api]);
 
@@ -56,7 +55,7 @@ export function Hero({ trendingMedia }: HeroProps) {
         setApi={setApi}
       >
         <CarouselContent className="h-[80vh] xl:h-[85vh] 2xl:h-[90vh]">
-          {trendingMediaSliced.map((item) => (
+          {mediaSliced.map((item) => (
             <CarouselItem key={item.id}>
               <div
                 className={cn(
@@ -112,7 +111,7 @@ export function Hero({ trendingMedia }: HeroProps) {
                 </div>
                 <div className="mt-auto py-4 flex justify-center items-center">
                   <div className=" flex justify-center items-center gap-2">
-                    {trendingMediaSliced.map((_, idx) => (
+                    {mediaSliced.map((_, idx) => (
                       <div
                         key={idx}
                         className="p-1 cursor-pointer"
