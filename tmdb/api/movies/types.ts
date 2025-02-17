@@ -3,7 +3,7 @@ export type MovieListType = "popular" | "top_rated" | "upcoming";
 export type MovieListRequestParams = {
   list: MovieListType;
   page?: string;
-  region?: string;
+  language?: string;
 };
 
 export type MovieDetailsRequestParams = {

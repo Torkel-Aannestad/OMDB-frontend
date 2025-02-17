@@ -7,7 +7,7 @@ export type SerieListType =
 export type SerieListRequestParams = {
   list: SerieListType;
   page?: string;
-  region?: string;
+  language?: string;
 };
 
 export type SerieDetailsRequestParams = {

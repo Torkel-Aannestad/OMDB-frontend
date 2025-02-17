@@ -8,4 +8,5 @@ export type PersonDetailsRequestParams = {
 export type PeopleListRequestParams = {
   list: PeopleListType;
   page?: string;
+  language?: string;
 };

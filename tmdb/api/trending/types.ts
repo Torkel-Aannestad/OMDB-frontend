@@ -1,4 +1,5 @@
 export type TrendingRequestParams = {
-  time: "day" | "week"
-  page?: string
-}
+  time: "day" | "week";
+  page?: string;
+  language?: string;
+};

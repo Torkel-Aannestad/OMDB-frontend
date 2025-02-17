@@ -4,11 +4,12 @@ import { Person, PersonDetails } from "@/tmdb/models/people";
 import { api } from "../api";
 import { PeopleListRequestParams, PersonDetailsRequestParams } from "./types";
 
-function list({ list, page }: PeopleListRequestParams) {
+function list({ list, page, language = "en-US" }: PeopleListRequestParams) {
   return api.fetcher<ListResponse<Person>>({
     endpoint: `person/${list}`,
     params: {
       page,
+      language,
     },
   });
 }

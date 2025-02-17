@@ -20,12 +20,16 @@ import {
   SerieVideosRequestParams,
 } from "./types";
 
-function list({ list, page = "1", region }: SerieListRequestParams) {
+function list({
+  list,
+  page = "1",
+  language = "en-US",
+}: SerieListRequestParams) {
   return api.fetcher<ListResponse<Serie>>({
     endpoint: `tv/${list}`,
     params: {
       page,
-      region,
+      language,
     },
   });
 }

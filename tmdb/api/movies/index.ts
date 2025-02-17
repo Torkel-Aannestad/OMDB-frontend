@@ -20,12 +20,12 @@ import {
   MovieVideosRequestParams,
 } from "./types";
 
-function list({ list, page, region }: MovieListRequestParams) {
+function list({ list, page, language = "en-US" }: MovieListRequestParams) {
   return api.fetcher<ListResponse<Movie>>({
     endpoint: `movie/${list}`,
     params: {
       page,
-      region,
+      language,
     },
   });
 }
