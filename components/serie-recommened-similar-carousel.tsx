@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import type { Movie } from "@/tmdb/models";
+import type { Serie } from "@/tmdb/models";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 import { cn } from "@/utils/tailwind";
@@ -14,17 +14,20 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import { MovieCard } from "./movie-card";
+import { SerieCard } from "./serie-card";
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
+import { MediaCard } from "./media-card";
+import { MediaImages } from "./media-image";
 
 type CarouselProps = {
   title: string;
   link?: string;
   linkTitle?: string;
   size?: "small" | "medium";
-  items: Movie[];
+  items: Serie[];
 };
 
-export function MovieRecommendedCarousel({
+export function SerieRecommendedSimilarCarousel({
   title,
   link,
   linkTitle = "Explore more",
@@ -49,18 +52,6 @@ export function MovieRecommendedCarousel({
     >
       <div className="mb-4 flex items-center justify-between gap-4 md:justify-start">
         <h2 className="font-medium md:text-lg">{title}</h2>
-
-        {link && (
-          <Link
-            href={link}
-            className={cn(
-              buttonVariants({ size: "sm", variant: "ghost" }),
-              "text-xs"
-            )}
-          >
-            {linkTitle}
-          </Link>
-        )}
 
         <div className="ml-auto hidden items-center gap-2 md:flex">
           {link && (
@@ -95,7 +86,7 @@ export function MovieRecommendedCarousel({
                 : "basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-[16%]"
             )}
           >
-            <MovieCard {...item} />
+            <SerieCard {...item} />
           </CarouselItem>
         ))}
       </CarouselContent>

@@ -6,7 +6,7 @@ import { tmdb } from "@/tmdb/api";
 import { format } from "@/tmdb/utils";
 import { MediaTrailerDialog } from "@/components/media-trailer-dialog";
 import { MediaImages } from "@/components/media-image";
-import { SerieRecommendedCarousel } from "@/components/serie-recommened-carousel";
+import { SerieRecommendedSimilarCarousel } from "@/components/serie-recommened-similar-carousel";
 import { SerieLastSeason } from "@/components/serie-last-season";
 
 type DetailProps = {
@@ -53,6 +53,10 @@ export default async function Details({ params }: DetailProps) {
 
   const recommendedMoviesSliced = (
     await tmdb.series.recommendations({ id: id })
+  ).results.slice(0, 20);
+
+  const similarMoviesSliced = (
+    await tmdb.series.similar({ id: id })
   ).results.slice(0, 20);
 
   return (
@@ -135,11 +139,18 @@ export default async function Details({ params }: DetailProps) {
           linkTitle="View All Media"
         />
 
-        <SerieRecommendedCarousel
+        <SerieRecommendedSimilarCarousel
           title={"Recommended"}
           items={recommendedMoviesSliced}
           link={`/series/${id}/recommended`}
           linkTitle="View All Recommended"
+        />
+
+        <SerieRecommendedSimilarCarousel
+          title={"Similar Series"}
+          items={similarMoviesSliced}
+          link={`/series/${id}/similar`}
+          linkTitle="View All Similar"
         />
       </MediaDetailView.Content>
     </MediaDetailView.Root>

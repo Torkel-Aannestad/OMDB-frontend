@@ -42,10 +42,7 @@ function credits({ id }: MovieCreditsRequestParams) {
   });
 }
 
-function recommendations({
-  id,
-  page = "1",
-}: MovieRecommendationsRequestParams) {
+function recommendations({ id, page }: MovieRecommendationsRequestParams) {
   return api.fetcher<ListResponse<Movie>>({
     endpoint: `movie/${id}/recommendations`,
     params: {
