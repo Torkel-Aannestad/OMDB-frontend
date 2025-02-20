@@ -151,6 +151,8 @@ export default async function Details({ params }: DetailProps) {
         <MovieRecommendedCarousel
           title={"Recommended"}
           items={recommendedMoviesSliced}
+          link={`/movies/${id}/recommended`}
+          linkTitle="View All Recommended"
         />
       </MediaDetailView.Content>
     </MediaDetailView.Root>

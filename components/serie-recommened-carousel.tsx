@@ -53,19 +53,18 @@ export function SerieRecommendedCarousel({
       <div className="mb-4 flex items-center justify-between gap-4 md:justify-start">
         <h2 className="font-medium md:text-lg">{title}</h2>
 
-        {link && (
-          <Link
-            href={link}
-            className={cn(
-              buttonVariants({ size: "sm", variant: "ghost" }),
-              "text-xs"
-            )}
-          >
-            {linkTitle}
-          </Link>
-        )}
-
         <div className="ml-auto hidden items-center gap-2 md:flex">
+          {link && (
+            <Link
+              href={link}
+              className={cn(
+                buttonVariants({ size: "sm", variant: "outline" }),
+                "text-xs"
+              )}
+            >
+              {linkTitle}
+            </Link>
+          )}
           <Button onClick={previousSlide} size="sm" variant="outline">
             <ArrowLeft className="size-3" />
             <span className="sr-only">Previous</span>

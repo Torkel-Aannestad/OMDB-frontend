@@ -5,33 +5,26 @@ import { Tabs, TabsLink, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { tmdb } from "@/tmdb/api";
 import { format } from "@/tmdb/utils/format";
 
-type MovieLayoutProps = {
+type LayoutProps = {
   params: { id: string };
   children: React.ReactNode;
 };
 
-export default async function Layout({ params, children }: MovieLayoutProps) {
+export default async function Layout({ params, children }: LayoutProps) {
   const { id } = await params;
-  const { title, release_date, poster_path } = await tmdb.movie.details({
+  const { name, first_air_date, poster_path } = await tmdb.series.details({
     id: id,
   });
-  const year = format.year(release_date);
+  const year = format.year(first_air_date);
 
   return (
     <ContainerWithSpacing className="mt-28 md:mt-32 lg:mt-32 xl:mt-32">
       <MediaDetailsSubView.Top
-        name={title}
+        name={name}
         year={year.toString()}
-        hrefBackLink={`/movies/${id}`}
+        hrefBackLink={`/series/${id}`}
         posterUrl={poster_path}
       />
-      <Tabs>
-        <TabsList>
-          <TabsLink href={`/movies/${id}/media/videos`}>Videos</TabsLink>
-          <TabsLink href={`/movies/${id}/media/posters`}>Posters</TabsLink>
-          <TabsLink href={`/movies/${id}/media/backdrops`}>Backdrops</TabsLink>
-        </TabsList>
-      </Tabs>
 
       <div>{children}</div>
     </ContainerWithSpacing>

@@ -63,6 +63,17 @@ export function MovieRecommendedCarousel({
         )}
 
         <div className="ml-auto hidden items-center gap-2 md:flex">
+          {link && (
+            <Link
+              href={link}
+              className={cn(
+                buttonVariants({ size: "sm", variant: "outline" }),
+                "text-xs"
+              )}
+            >
+              {linkTitle}
+            </Link>
+          )}
           <Button onClick={previousSlide} size="sm" variant="outline">
             <ArrowLeft className="size-3" />
             <span className="sr-only">Previous</span>

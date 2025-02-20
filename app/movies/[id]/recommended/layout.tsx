@@ -5,12 +5,12 @@ import { Tabs, TabsLink, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { tmdb } from "@/tmdb/api";
 import { format } from "@/tmdb/utils/format";
 
-type MovieLayoutProps = {
+type LayoutProps = {
   params: { id: string };
   children: React.ReactNode;
 };
 
-export default async function Layout({ params, children }: MovieLayoutProps) {
+export default async function Layout({ params, children }: LayoutProps) {
   const { id } = await params;
   const { title, release_date, poster_path } = await tmdb.movie.details({
     id: id,
@@ -25,13 +25,6 @@ export default async function Layout({ params, children }: MovieLayoutProps) {
         hrefBackLink={`/movies/${id}`}
         posterUrl={poster_path}
       />
-      <Tabs>
-        <TabsList>
-          <TabsLink href={`/movies/${id}/media/videos`}>Videos</TabsLink>
-          <TabsLink href={`/movies/${id}/media/posters`}>Posters</TabsLink>
-          <TabsLink href={`/movies/${id}/media/backdrops`}>Backdrops</TabsLink>
-        </TabsList>
-      </Tabs>
 
       <div>{children}</div>
     </ContainerWithSpacing>
