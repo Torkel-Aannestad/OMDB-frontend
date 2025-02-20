@@ -131,8 +131,8 @@ export default async function Details({ params }: DetailProps) {
           videos={videos}
           posters={posters}
           backdrops={backdrops}
-          // link="/"
-          // linkTitle="View All Media"
+          link={`/series/${id}/media/posters`}
+          linkTitle="View All Media"
         />
 
         <SerieRecommendedCarousel

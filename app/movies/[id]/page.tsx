@@ -8,6 +8,7 @@ import { format } from "@/tmdb/utils";
 import { MediaTrailerDialog } from "@/components/media-trailer-dialog";
 import { MediaImages } from "@/components/media-image";
 import { MovieCollection } from "@/components/movie-collection";
+import Link from "next/link";
 
 type DetailProps = {
   params: Promise<{ id: string }>;
@@ -90,9 +91,14 @@ export default async function Details({ params }: DetailProps) {
           </MediaDetailView.Genres>
           <MediaDetailView.Genres>
             {genres?.map((genre) => (
-              <MediaDetailView.Genre key={genre.id}>
-                {genre.name}
-              </MediaDetailView.Genre>
+              <Link
+                key={genre.id}
+                href={`/movies/categories?with_genres=${genre.id}`}
+              >
+                <MediaDetailView.Genre key={genre.id}>
+                  {genre.name}
+                </MediaDetailView.Genre>
+              </Link>
             ))}
           </MediaDetailView.Genres>
 
@@ -129,8 +135,8 @@ export default async function Details({ params }: DetailProps) {
           videos={videos}
           posters={posters}
           backdrops={backdrops}
-          // link="/"
-          // linkTitle="View All Media"
+          link={`/movies/${id}/media/videos`}
+          linkTitle="View All Media"
         />
 
         {belongs_to_collection && (

@@ -105,19 +105,18 @@ export function VideoImageCarousel({
           </TabsList>
         </Tabs>
 
-        {link && (
-          <Link
-            href={link}
-            className={cn(
-              buttonVariants({ size: "sm", variant: "ghost" }),
-              "text-xs"
-            )}
-          >
-            {linkTitle}
-          </Link>
-        )}
-
         <div className="ml-auto hidden items-center gap-2 md:flex">
+          {link && (
+            <Link
+              href={link}
+              className={cn(
+                buttonVariants({ size: "sm", variant: "outline" }),
+                "text-xs"
+              )}
+            >
+              {linkTitle}
+            </Link>
+          )}
           <Button onClick={previousSlide} size="sm" variant="outline">
             <ArrowLeft className="size-3" />
             <span className="sr-only">Previous</span>
@@ -330,3 +329,70 @@ function BackdropCardDialogExpand({
 //     </div>
 //   );
 // }
+type ImageListProps = {
+  images: Image[];
+};
+export function PosterList({ images }: ImageListProps) {
+  return (
+    <div>
+      <div className="grid-list">
+        {images.map((item, idx) => (
+          <PosterCardDialogExpand
+            filePath={item.file_path}
+            key={idx}
+            {...item}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+export function BackdropList({ images }: ImageListProps) {
+  return (
+    <div>
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        {images.map((item, idx) => (
+          <BackdropCardDialogExpand
+            filePath={item.file_path}
+            key={idx}
+            {...item}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+type VideoListProps = {
+  videos: Video[];
+};
+export function VideoList({ videos }: VideoListProps) {
+  return (
+    <div>
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        {videos.map((video) => (
+          <Dialog key={video.id} modal>
+            <DialogTrigger asChild>
+              <MediaCard.Root className="w-full aspect-video">
+                <VideoCard name={video.name} ytKey={video.key} />
+              </MediaCard.Root>
+            </DialogTrigger>
+
+            <DialogContent className="max-w-screen-lg">
+              <DialogHeader>
+                <DialogTitle>{video.name}</DialogTitle>
+              </DialogHeader>
+
+              <iframe
+                className="aspect-square size-full rounded-md sm:aspect-video"
+                src={yt.video(video.key, false)}
+                allow="autoplay; encrypted-media"
+                allowFullScreen={true}
+              />
+            </DialogContent>
+          </Dialog>
+        ))}
+      </div>
+    </div>
+  );
+}

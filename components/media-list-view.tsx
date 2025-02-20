@@ -6,6 +6,7 @@ import { MediaListNav } from "./media-list-nav";
 import { SerieCard } from "./serie-card";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { TabsLink } from "./ui/tabs";
 
 type MediaListProps = {
   title?: string;
@@ -45,20 +46,20 @@ export function MediaListView({
       )}
       {showListOptions && (
         <MediaListNav.Main>
-          <MediaListNav.List>
-            <MediaListNav.Item
+          <MediaListNav.ListTabs>
+            <TabsLink
               href={`/${movies ? "movies" : "series"}/popular`}
               title="Popular"
-            />
-            <MediaListNav.Item
-              href={`/${movies ? "movies" : "series"}/top-rated`}
-              title="Top Rated"
-            />
-            <MediaListNav.Item
-              href={`/${movies ? "movies" : "series"}/categories`}
-              title="Categories"
-            />
-          </MediaListNav.List>
+            >
+              Popular
+            </TabsLink>
+            <TabsLink href={`/${movies ? "movies" : "series"}/top-rated`}>
+              Top Rated
+            </TabsLink>
+            <TabsLink href={`/${movies ? "movies" : "series"}/categories`}>
+              Categories
+            </TabsLink>
+          </MediaListNav.ListTabs>
           {showCatgeoryOptions && (
             <MediaListNav.Categories media_type={movies ? "movie" : "serie"} />
           )}

@@ -4,6 +4,8 @@ import * as React from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 
 import { cn } from "@/utils/tailwind";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Tabs = TabsPrimitive.Root;
 
@@ -52,4 +54,29 @@ const TabsContent = React.forwardRef<
 ));
 TabsContent.displayName = TabsPrimitive.Content.displayName;
 
-export { Tabs, TabsList, TabsTrigger, TabsContent };
+const TabsLink = React.forwardRef<
+  React.ElementRef<typeof Link>,
+  React.ComponentPropsWithoutRef<typeof Link>
+>(({ href, prefetch = false, scroll = false, ...props }, ref) => {
+  const pathname = usePathname();
+
+  return (
+    <TabsTrigger
+      data-state={pathname === href ? "active" : "inactive"}
+      value={href as string}
+      asChild
+    >
+      <Link
+        ref={ref}
+        href={href}
+        prefetch={prefetch}
+        scroll={scroll}
+        replace
+        {...props}
+      />
+    </TabsTrigger>
+  );
+});
+TabsLink.displayName = "TabsLink";
+
+export { Tabs, TabsList, TabsTrigger, TabsContent, TabsLink };
