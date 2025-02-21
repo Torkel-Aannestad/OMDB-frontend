@@ -30,13 +30,10 @@ function List({ title = "Reviews", reviews, className }: ReviewListProps) {
       </div>
 
       {reviews ? (
-        <div className="grid grid-cols-[1fr, max-w-80]">
-          <div className="flex flex-col gap-4">
-            {reviews.map((review) => (
-              <ReviewCard review={review} />
-            ))}
-          </div>
-          <div className="60px"></div>
+        <div className="flex flex-col gap-4">
+          {reviews.map((review) => (
+            <ReviewCard key={review.id} review={review} />
+          ))}
         </div>
       ) : (
         <EmptyStateCard text="Currently no reviews" />
@@ -99,7 +96,7 @@ function ReviewCard({ review, className, ...props }: ReviewCardProps) {
   const user = name !== "" ? name : username;
 
   return (
-    <Card className="border" key={review.id + review.url}>
+    <Card className="border">
       <CardHeader>
         <div className="flex items-center gap-2">
           <UserAvatar image={avatar_path} username={user} alt={user} />
