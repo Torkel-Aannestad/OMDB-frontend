@@ -26,7 +26,7 @@ function List({ title = "Reviews", reviews, className }: ReviewListProps) {
   return (
     <div className={cn("space-y-8", className)}>
       <div className="md:mb-12 md:mt-6">
-        <h1 className="mb-2 text-2xl font-medium">{title}</h1>
+        <h1 className="text-2xl font-medium">{title}</h1>
       </div>
 
       {reviews ? (

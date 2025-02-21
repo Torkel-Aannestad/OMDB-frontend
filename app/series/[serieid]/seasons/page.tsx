@@ -10,7 +10,7 @@ type Props = {
   params: Promise<{ serieid: string }>;
 };
 
-export default async function Similar({ params }: Props) {
+export default async function Seasons({ params }: Props) {
   const { serieid } = await params;
 
   const serieDetails = await tmdb.series.details({
@@ -38,7 +38,7 @@ export default async function Similar({ params }: Props) {
           {serieDetails.seasons.map((item) => {
             return (
               <Link
-                href={`/series/${serieDetails.id}/seasons/${item.id}`}
+                href={`/series/${serieDetails.id}/seasons/${item.season_number}`}
                 key={item.id}
                 prefetch={true}
               >

@@ -122,7 +122,12 @@ export default async function Details({ params }: DetailProps) {
         </div>
       </MediaDetailView.Hero>
       <MediaDetailView.Content>
-        <CastCarousel title={"Cast"} items={cast} />
+        <CastCarousel
+          title={"Cast"}
+          items={cast}
+          link={`/movies/${id}/credits`}
+          linkTitle="View Cast & Crew"
+        />
 
         <ReviewsView.Single
           title="Reviews"

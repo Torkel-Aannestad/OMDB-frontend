@@ -8,27 +8,26 @@ import { format } from "@/tmdb/utils";
 import { getUniqueItems } from "@/utils/general";
 
 type Props = {
-  params: Promise<{ serieid: string; seasonid: string }>;
+  params: Promise<{ serieid: string; seasonnumber: string }>;
 };
 
 export default async function Similar({ params }: Props) {
-  const { serieid, seasonid } = await params;
+  const { serieid, seasonnumber } = await params;
 
   const { name, poster_path, episodes, air_date } = await tmdb.seasons.details({
     id: serieid,
-    season: 1,
+    season: seasonnumber,
   });
 
   const { cast, crew } = await tmdb.seasons.credits({
     id: serieid,
-    season: 1,
+    season: seasonnumber,
   });
-
-  const year = format.year(air_date);
-
   const guestStars = getUniqueItems(
     episodes.map((episode) => episode.guest_stars).flat()
   );
+
+  const year = format.year(air_date);
 
   return (
     <div className="space-y-8">
@@ -40,10 +39,18 @@ export default async function Similar({ params }: Props) {
       />
       <Tabs defaultValue="episodes">
         <TabsList>
-          <TabsTrigger value="episodes">Episodes</TabsTrigger>
-          <TabsTrigger value="cast">Cast</TabsTrigger>
-          <TabsTrigger value="guests">Guest Stars</TabsTrigger>
-          <TabsTrigger value="crew">Crew</TabsTrigger>
+          <TabsTrigger value="episodes" disabled={episodes?.length < 1 && true}>
+            Episodes
+          </TabsTrigger>
+          <TabsTrigger value="cast" disabled={cast?.length < 1 && true}>
+            Cast
+          </TabsTrigger>
+          <TabsTrigger value="guests" disabled={guestStars?.length < 1 && true}>
+            Guest Stars
+          </TabsTrigger>
+          <TabsTrigger value="crew" disabled={crew?.length < 1 && true}>
+            Crew
+          </TabsTrigger>
         </TabsList>
 
         <TabsContent value="episodes">
