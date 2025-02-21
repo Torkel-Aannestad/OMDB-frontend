@@ -1,6 +1,6 @@
 import { CastCarousel } from "@/components/cast-carousel";
 import { MovieRecommendedCarousel } from "@/components/movie-recommened-carousel";
-import { Reviews } from "@/components/reviews-view";
+import { ReviewsView } from "@/components/reviews-view";
 import { VideoImageCarousel } from "@/components/video-image-view";
 import { MediaDetailView } from "@/components/media-details-view";
 import { tmdb } from "@/tmdb/api";
@@ -124,10 +124,12 @@ export default async function Details({ params }: DetailProps) {
       <MediaDetailView.Content>
         <CastCarousel title={"Cast"} items={cast} />
 
-        <Reviews.Single
+        <ReviewsView.Single
           title="Reviews"
           review={review}
           numberOfReviews={numberOfReviews}
+          link={`/movies/${id}/reviews`}
+          linkTitle="All Reviews"
         />
 
         <VideoImageCarousel

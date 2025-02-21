@@ -1,5 +1,5 @@
 import { CastCarousel } from "@/components/cast-carousel";
-import { Reviews } from "@/components/reviews-view";
+import { ReviewsView } from "@/components/reviews-view";
 import { VideoImageCarousel } from "@/components/video-image-view";
 import { MediaDetailView } from "@/components/media-details-view";
 import { tmdb } from "@/tmdb/api";
@@ -125,7 +125,7 @@ export default async function Details({ params }: DetailProps) {
         />
 
         {numberOfReviews > 0 && (
-          <Reviews.Single
+          <ReviewsView.Single
             title="Reviews"
             review={review}
             numberOfReviews={numberOfReviews}

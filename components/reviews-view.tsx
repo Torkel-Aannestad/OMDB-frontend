@@ -16,6 +16,35 @@ import { format } from "@/tmdb/utils";
 import { Divide, ReceiptPoundSterling } from "lucide-react";
 import { EmptyStateCard } from "./empty-state-card";
 
+type ReviewListProps = ComponentProps<"div"> & {
+  title?: string;
+  reviews: Review[];
+  numberOfReviews?: number;
+};
+
+function List({ title = "Reviews", reviews, className }: ReviewListProps) {
+  return (
+    <div className={cn("space-y-8", className)}>
+      <div className="md:mb-12 md:mt-6">
+        <h1 className="mb-2 text-2xl font-medium">{title}</h1>
+      </div>
+
+      {reviews ? (
+        <div className="grid grid-cols-[1fr, max-w-80]">
+          <div className="flex flex-col gap-4">
+            {reviews.map((review) => (
+              <ReviewCard review={review} />
+            ))}
+          </div>
+          <div className="60px"></div>
+        </div>
+      ) : (
+        <EmptyStateCard text="Currently no reviews" />
+      )}
+    </div>
+  );
+}
+
 type SingleReviewProps = ComponentProps<"div"> & {
   title: string;
   link?: string;
@@ -34,7 +63,7 @@ function Single({
 }: SingleReviewProps) {
   return (
     <div className={cn("", className)}>
-      <div className="mb-4 flex items-center justify-between gap-4 md:justify-start">
+      <div className="mb-4 flex items-center justify-between gap-4 ">
         <h2 className="font-medium md:text-lg">
           {title}{" "}
           <span className="text-muted-foreground">({numberOfReviews})</span>
@@ -43,7 +72,7 @@ function Single({
           <Link
             href={link}
             className={cn(
-              buttonVariants({ size: "sm", variant: "ghost" }),
+              buttonVariants({ size: "sm", variant: "outline" }),
               "text-xs"
             )}
           >
@@ -61,6 +90,7 @@ function Single({
 }
 
 type ReviewCardProps = ComponentProps<"div"> & { review: Review };
+
 function ReviewCard({ review, className, ...props }: ReviewCardProps) {
   const { author_details, created_at, content } = review;
   const { name, avatar_path, rating, username } = author_details;
@@ -69,9 +99,9 @@ function ReviewCard({ review, className, ...props }: ReviewCardProps) {
   const user = name !== "" ? name : username;
 
   return (
-    <Card>
+    <Card className="border" key={review.id + review.url}>
       <CardHeader>
-        <div className="flex items-center gap-2 ">
+        <div className="flex items-center gap-2">
           <UserAvatar image={avatar_path} username={user} alt={user} />
           <div className="flex flex-col gap-2">
             <CardTitle>{user}</CardTitle>
@@ -87,22 +117,14 @@ function ReviewCard({ review, className, ...props }: ReviewCardProps) {
           </div>
         </div>
       </CardHeader>
-      <CardContent className="whitespace-pre-line text-muted-foreground max-w-4xl">
+      <CardContent className="whitespace-pre-line text-secondary-foreground ">
         {content}
       </CardContent>
     </Card>
   );
 }
-function ReviewCardEmtpyState() {
-  return (
-    <Card>
-      <CardContent className="whitespace-pre-line text-sm ">
-        no reviews
-      </CardContent>
-    </Card>
-  );
-}
 
-export const Reviews = {
+export const ReviewsView = {
   Single,
+  List,
 };
