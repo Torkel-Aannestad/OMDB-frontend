@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import type { Movie } from "@/tmdb/models";
+import type { Serie } from "@/tmdb/models";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 import { cn } from "@/utils/tailwind";
@@ -13,7 +13,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { MovieCard } from "./movie-card";
+import { SerieCard } from "./serie-card";
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 
 type CarouselProps = {
@@ -21,10 +21,10 @@ type CarouselProps = {
   link?: string;
   linkTitle?: string;
   size?: "small" | "medium";
-  items: Movie[];
+  items: Serie[];
 };
 
-export function MovieRecommendedSimilarCarousel({
+export function SerieRecommendedCarousel({
   title,
   link,
   linkTitle = "Explore more",
@@ -83,7 +83,7 @@ export function MovieRecommendedSimilarCarousel({
                 : "basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-[16%]"
             )}
           >
-            <MovieCard {...item} />
+            <SerieCard {...item} />
           </CarouselItem>
         ))}
       </CarouselContent>
