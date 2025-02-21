@@ -6,14 +6,14 @@ import { tmdb } from "@/tmdb/api";
 import { format } from "@/tmdb/utils/format";
 
 type LayoutProps = {
-  params: { id: string };
+  params: { serieid: string };
   children: React.ReactNode;
 };
 
 export default async function Layout({ params, children }: LayoutProps) {
-  const { id } = await params;
+  const { serieid } = await params;
   const { name, first_air_date, poster_path } = await tmdb.series.details({
-    id: id,
+    id: serieid,
   });
   const year = format.year(first_air_date);
 
@@ -22,7 +22,7 @@ export default async function Layout({ params, children }: LayoutProps) {
       <MediaDetailsSubView.Top
         name={name}
         year={year.toString()}
-        hrefBackLink={`/series/${id}`}
+        hrefBackLink={`/series/${serieid}`}
         posterUrl={poster_path}
       />
 

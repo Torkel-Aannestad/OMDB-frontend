@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
 type MediaProps = {
-  params: { id: string };
+  params: { serieid: string };
 };
 export default async function Media({ params }: MediaProps) {
-  const { id } = await params;
-  redirect(`/series/${id}/media/posters`);
+  const { serieid } = await params;
+  redirect(`/series/${serieid}/media/posters`);
 }

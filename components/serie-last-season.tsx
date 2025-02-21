@@ -12,6 +12,7 @@ type LastSeasonProps = {
   id: string | number;
   lastEpisode: LastEpisodeToAir;
   title: string;
+  seasonScore: number;
   link?: string;
   linkTitle?: string;
 };
@@ -19,6 +20,7 @@ export async function SerieLastSeason({
   id,
   lastEpisode,
   title,
+  seasonScore,
   link,
   linkTitle,
 }: LastSeasonProps) {
@@ -27,15 +29,6 @@ export async function SerieLastSeason({
       id: id,
       season: lastEpisode.season_number,
     });
-
-  function getSeasonScore(episodes: Episode[]) {
-    let seasonScore = 0;
-    for (let i = 0; i < episodes.length; i++) {
-      seasonScore += episodes[i].vote_average;
-    }
-    return ((seasonScore / episodes.length) * 10).toFixed(0);
-  }
-  const seasonScore = getSeasonScore(episodes);
 
   return (
     <div>
@@ -71,14 +64,14 @@ export async function SerieLastSeason({
           </h2>
           <div className="my-4 gap-2 flex">
             <Badge variant="secondary" className="hover:bg-secondary">
-              User Score {seasonScore}%
+              {seasonScore * 10}% User Score
             </Badge>
             <Badge variant="secondary" className="hover:bg-secondary">
               {episodes.length} Episodes
             </Badge>
           </div>
           <p className="mb-4 max-w-2xl text-muted-foreground">{overview}</p>
-          <Link href={"/"} className={cn(buttonVariants())}>
+          <Link href={`/series/${id}/seasons`} className={cn(buttonVariants())}>
             View Seasons
           </Link>
           {/* <MovieCollectionDialog collection={collection} /> */}

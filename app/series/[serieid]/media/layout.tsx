@@ -4,16 +4,18 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsLink, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { tmdb } from "@/tmdb/api";
 import { format } from "@/tmdb/utils/format";
+import { cn } from "@/utils/tailwind";
+import Link from "next/link";
 
-type LayoutProps = {
-  params: { id: string };
+type SeriesLayoutProps = {
+  params: { serieid: string };
   children: React.ReactNode;
 };
 
-export default async function Layout({ params, children }: LayoutProps) {
-  const { id } = await params;
+export default async function Layout({ params, children }: SeriesLayoutProps) {
+  const { serieid } = await params;
   const { name, first_air_date, poster_path } = await tmdb.series.details({
-    id: id,
+    id: serieid,
   });
   const year = format.year(first_air_date);
 
@@ -22,9 +24,18 @@ export default async function Layout({ params, children }: LayoutProps) {
       <MediaDetailsSubView.Top
         name={name}
         year={year.toString()}
-        hrefBackLink={`/series/${id}`}
+        hrefBackLink={`/series/${serieid}`}
         posterUrl={poster_path}
       />
+      <Tabs>
+        <TabsList>
+          <TabsLink href={`/series/${serieid}/media/videos`}>Videos</TabsLink>
+          <TabsLink href={`/series/${serieid}/media/posters`}>Posters</TabsLink>
+          <TabsLink href={`/series/${serieid}/media/backdrops`}>
+            Backdrops
+          </TabsLink>
+        </TabsList>
+      </Tabs>
 
       <div>{children}</div>
     </ContainerWithSpacing>

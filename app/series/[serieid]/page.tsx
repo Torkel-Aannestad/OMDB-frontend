@@ -10,10 +10,10 @@ import { SerieRecommendedSimilarCarousel } from "@/components/serie-recommened-s
 import { SerieLastSeason } from "@/components/serie-last-season";
 
 type DetailProps = {
-  params: Promise<{ id: string }>;
+  params: Promise<{ serieid: string }>;
 };
 export default async function Details({ params }: DetailProps) {
-  const { id } = await params;
+  const { serieid } = await params;
 
   const {
     name,
@@ -27,36 +27,36 @@ export default async function Details({ params }: DetailProps) {
     seasons,
     last_episode_to_air,
   } = await tmdb.series.details({
-    id: id,
+    id: serieid,
   });
 
   const { crew } = await tmdb.series.credits({
-    id: id,
+    id: serieid,
   });
   const director = crew.find((crew) => crew.job === "Director");
 
   const { cast } = await tmdb.series.credits({
-    id: id,
+    id: serieid,
   });
 
   const { results } = await tmdb.series.reviews({
-    id: id,
+    id: serieid,
   });
   const review = results[0];
   const numberOfReviews = results.length;
 
-  const videos = (await tmdb.series.videos({ id: id })).results;
+  const videos = (await tmdb.series.videos({ id: serieid })).results;
 
   const { posters, backdrops } = await tmdb.series.images({
-    id: id,
+    id: serieid,
   });
 
   const recommendedMoviesSliced = (
-    await tmdb.series.recommendations({ id: id })
+    await tmdb.series.recommendations({ id: serieid })
   ).results.slice(0, 20);
 
   const similarMoviesSliced = (
-    await tmdb.series.similar({ id: id })
+    await tmdb.series.similar({ id: serieid })
   ).results.slice(0, 20);
 
   return (
@@ -118,39 +118,39 @@ export default async function Details({ params }: DetailProps) {
       <MediaDetailView.Content>
         <CastCarousel title={"Cast"} items={cast} />
         <SerieLastSeason
-          id={id}
+          id={serieid}
           lastEpisode={last_episode_to_air}
           title={"Last Season"}
-          link={""}
+          seasonScore={
+            seasons[last_episode_to_air.season_number - 1].vote_average
+          }
+          link={`/series/${serieid}/seasons`}
           linkTitle={""}
         />
 
-        <Reviews.Single
-          title="Reviews"
-          review={review}
-          numberOfReviews={numberOfReviews}
-        />
+        {numberOfReviews > 0 && (
+          <Reviews.Single
+            title="Reviews"
+            review={review}
+            numberOfReviews={numberOfReviews}
+            link={`/series/${serieid}/reviews`}
+            linkTitle="All Reviews"
+          />
+        )}
         <VideoImageCarousel
           title="Media"
           videos={videos}
           posters={posters}
           backdrops={backdrops}
-          link={`/series/${id}/media/posters`}
+          link={`/series/${serieid}/media/posters`}
           linkTitle="View All Media"
         />
 
         <SerieRecommendedSimilarCarousel
           title={"Recommended"}
           items={recommendedMoviesSliced}
-          link={`/series/${id}/recommended`}
+          link={`/series/${serieid}/recommended`}
           linkTitle="View All Recommended"
-        />
-
-        <SerieRecommendedSimilarCarousel
-          title={"Similar Series"}
-          items={similarMoviesSliced}
-          link={`/series/${id}/similar`}
-          linkTitle="View All Similar"
         />
       </MediaDetailView.Content>
     </MediaDetailView.Root>

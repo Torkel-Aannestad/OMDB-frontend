@@ -105,7 +105,7 @@ type Network = {
   origin_country: string;
 };
 
-type Season = {
+export type Season = {
   air_date: string;
   episode_count: number;
   id: number;

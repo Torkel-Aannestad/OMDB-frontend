@@ -2,12 +2,12 @@ import { VideoList } from "@/components/video-image-view";
 import { tmdb } from "@/tmdb/api";
 
 type Props = {
-  params: Promise<{ id: string }>;
+  params: Promise<{ serieid: string }>;
 };
 export default async function Videos({ params }: Props) {
-  const { id } = await params;
+  const { serieid } = await params;
   const { results } = await tmdb.series.videos({
-    id: id,
+    id: serieid,
   });
   return <VideoList videos={results} />;
 }

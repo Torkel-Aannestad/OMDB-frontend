@@ -2,12 +2,12 @@ import { BackdropList } from "@/components/video-image-view";
 import { tmdb } from "@/tmdb/api";
 
 type Props = {
-  params: Promise<{ id: string }>;
+  params: Promise<{ serieid: string }>;
 };
 export default async function Backdrops({ params }: Props) {
-  const { id } = await params;
+  const { serieid } = await params;
   const { backdrops } = await tmdb.series.images({
-    id: id,
+    id: serieid,
   });
   return <BackdropList images={backdrops} />;
 }

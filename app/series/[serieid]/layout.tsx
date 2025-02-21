@@ -3,15 +3,15 @@ import { tmdb } from "@/tmdb/api";
 
 type DetailLayoutProps = {
   params: {
-    id: string;
+    serieid: string;
   };
   children: React.ReactNode;
 };
 
 export async function generateMetadata({ params }: DetailLayoutProps) {
-  const { id } = await params;
+  const { serieid } = await params;
   const { name } = await tmdb.series.details({
-    id: id,
+    id: serieid,
   });
 
   return {
@@ -23,9 +23,9 @@ export default async function DetailLayout({
   params,
   children,
 }: DetailLayoutProps) {
-  const { id } = await params;
+  const { serieid } = await params;
 
-  if (!id) return notFound();
+  if (!serieid) return notFound();
 
   return <>{children}</>;
 }
