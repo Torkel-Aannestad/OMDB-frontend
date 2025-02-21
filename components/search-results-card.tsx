@@ -21,8 +21,17 @@ export function SearchResultCard({ media }: SearchResultCardProps) {
   const isPerson = media_type === "person";
   const isMovie = media_type === "movie";
 
+  let mediaTypeSlug;
+  if (isMovie) {
+    mediaTypeSlug = "movies";
+  } else if (isPerson) {
+    mediaTypeSlug = "person";
+  } else {
+    mediaTypeSlug = "series";
+  }
+
   return (
-    <Link href={`/${media_type}/${id}`} prefetch={false}>
+    <Link href={`/${mediaTypeSlug}/${id}`} prefetch={false}>
       <MediaCard.Root>
         <MediaImages.Poster
           image={isPerson ? media.profile_path : media.poster_path}
