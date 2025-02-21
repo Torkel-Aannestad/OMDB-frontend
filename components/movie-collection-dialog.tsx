@@ -41,15 +41,15 @@ export const MovieCollectionDialog: React.FC<MovieCollectionDialogProps> = ({
           </DialogDescription>
         </DialogHeader>
 
-        <ScrollArea className="max-h-[80dvh] md:pr-4">
+        <ScrollArea className="max-h-[80vh] md:pr-4">
           <div className="grid gap-4 md:grid-cols-2">
             {parts.map((part) => (
-              <Link href={`/movie/${part.id}`} key={part.id}>
-                <MediaCard.Root className="w-full aspect-video relative ">
+              <Link href={`/movies/${part.id}`} key={part.id}>
+                <MediaCard.Root className="w-full aspect-video relative">
                   <MediaImages.Backdrop
                     image={part.backdrop_path}
                     alt=""
-                    className="rounded-md"
+                    className="rounded-md "
                   />
                   <MediaCard.Content>
                     <MediaCard.Title>

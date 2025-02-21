@@ -35,9 +35,9 @@ export async function MovieCollection({
           </Link>
         )}
       </div>
-      <div className="relative h-80">
+      <div className="relative h-80 lg:h-[450px]">
         <MediaImages.Backdrop
-          className="object-top rounded-md"
+          className=" rounded-md"
           image={collection.backdrop_path}
           alt={collection.name}
         />
