@@ -3,6 +3,7 @@ import { MediaImages } from "./media-image";
 import { Button, buttonVariants } from "./ui/button";
 import { cn } from "@/utils/tailwind";
 import { ArrowLeft } from "lucide-react";
+import { Skeleton } from "./ui/skeleton";
 
 type TopProps = {
   name: string;

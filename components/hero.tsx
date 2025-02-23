@@ -53,7 +53,6 @@ export function Hero({ items, startIndex = 0 }: HeroProps) {
     setCurrent(index);
   }
 
-  console.log(`current ${current}`);
   return (
     <Carousel
       opts={{ loop: true }}

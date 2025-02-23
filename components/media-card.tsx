@@ -1,6 +1,7 @@
 import { ComponentProps } from "react";
 
 import { cn } from "@/utils/tailwind";
+import { Skeleton } from "./ui/skeleton";
 
 function Root({ className, ...props }: ComponentProps<"div">) {
   return <div className={cn("relative aspect-poster", className)} {...props} />;
@@ -39,10 +40,18 @@ function Excerpt({ className, ...props }: ComponentProps<"p">) {
     />
   );
 }
+function CardSkeleton() {
+  return (
+    <Root>
+      <Skeleton />
+    </Root>
+  );
+}
 
 export const MediaCard = {
   Root,
   Content,
   Title,
   Excerpt,
+  CardSkeleton,
 };

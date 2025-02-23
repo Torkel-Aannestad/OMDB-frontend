@@ -7,6 +7,8 @@ import { SerieCard } from "./serie-card";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { TabsLink } from "./ui/tabs";
+import { Skeleton } from "./ui/skeleton";
+import { MediaCard } from "./media-card";
 
 type MediaListProps = {
   title?: string;
@@ -92,6 +94,29 @@ export function MediaListView({
       </div>
 
       <ListPagination currentPage={currentPage} totalPages={totalPages} />
+    </div>
+  );
+}
+
+export function MediaListViewSkeleton() {
+  return (
+    <div className=" space-y-8">
+      <div className="md:mb-12 md:mt-6">
+        <Skeleton className="h-4" />
+      </div>
+
+      <div className="grid-list">
+        <div className="flex flex-wrap">
+          {Array.from({ length: 20 }).map((_, i) => (
+            <div
+              key={i}
+              className="basis-1/2 rounded-md pb-4 pr-4 md:basis-1/3 lg:basis-1/4 xl:basis-1/5"
+            >
+              <Skeleton className="aspect-poster w-full" />
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

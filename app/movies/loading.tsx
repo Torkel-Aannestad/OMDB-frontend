@@ -1,8 +1,9 @@
+import { Container } from "@/components/container";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Loading() {
   return (
-    <div className="container space-y-8">
+    <Container className="space-y-8">
       <Skeleton className="h-[60vh] min-h-[560px] rounded-md" />
       <Skeleton className="h-8 w-64" />
       <div className="flex flex-wrap">
@@ -15,6 +16,6 @@ export default function Loading() {
           </div>
         ))}
       </div>
-    </div>
+    </Container>
   );
 }
