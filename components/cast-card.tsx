@@ -3,10 +3,9 @@ import { Cast } from "@/tmdb/models";
 
 import { MediaCard } from "@/components/media-card";
 import { MediaImages } from "./media-image";
-// add tooltip for title and character
 export function CastCard({ id, name, profile_path, character }: Cast) {
   return (
-    <Link href={`/person/${id}`} prefetch={false}>
+    <Link href={`/people/${id}`}>
       <MediaCard.Root>
         <MediaImages.Poster image={profile_path} alt={name} />
         <MediaCard.Content>

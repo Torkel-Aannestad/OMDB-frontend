@@ -55,7 +55,6 @@ export default async function Details({ params }: DetailProps) {
   const recommendedMoviesSliced = (
     await tmdb.movie.recommendations({ id: id })
   ).results.slice(0, 20);
-
   return (
     <MediaDetailView.Root>
       <MediaDetailView.Backdrop>
