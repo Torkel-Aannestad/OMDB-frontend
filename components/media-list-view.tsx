@@ -71,11 +71,23 @@ export function MediaListView({
       </div>
 
       <div className="grid-list">
-        {movies?.map((item) => {
-          return <MovieCard key={item.id} {...item} />;
+        {movies?.map((item, idx) => {
+          return (
+            <MovieCard
+              key={item.id}
+              priority={idx < 10 ? true : false}
+              {...item}
+            />
+          );
         }) ?? ""}
-        {series?.map((item) => {
-          return <SerieCard key={item.id} {...item} />;
+        {series?.map((item, idx) => {
+          return (
+            <SerieCard
+              key={item.id}
+              priority={idx < 10 ? true : false}
+              {...item}
+            />
+          );
         }) ?? ""}
       </div>
 

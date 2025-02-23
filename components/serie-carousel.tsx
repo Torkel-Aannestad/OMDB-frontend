@@ -75,7 +75,7 @@ export function SerieCarousel({
       </div>
 
       <CarouselContent>
-        {items.map((item) => (
+        {items.map((item, idx) => (
           <CarouselItem
             key={item.id}
             className={cn(
@@ -84,7 +84,7 @@ export function SerieCarousel({
                 : "basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-[16%]"
             )}
           >
-            <SerieCard {...item} />
+            <SerieCard priority={idx < 10 ? true : false} {...item} />
           </CarouselItem>
         ))}
       </CarouselContent>

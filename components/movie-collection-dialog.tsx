@@ -50,6 +50,7 @@ export const MovieCollectionDialog: React.FC<MovieCollectionDialogProps> = ({
                     image={part.backdrop_path}
                     alt=""
                     className="rounded-md "
+                    priority
                   />
                   <MediaCard.Content>
                     <MediaCard.Title>

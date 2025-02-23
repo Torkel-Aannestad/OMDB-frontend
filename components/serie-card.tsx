@@ -3,7 +3,16 @@ import Link from "next/link";
 import { MediaCard } from "./media-card";
 import { MediaImages } from "./media-image";
 
-export function SerieCard({ id, poster_path, name }: Serie) {
+type SerieCardProps = Serie & {
+  priority?: boolean;
+};
+
+export function SerieCard({
+  priority = false,
+  id,
+  poster_path,
+  name,
+}: SerieCardProps) {
   return (
     <Link href={`/series/${id}`} key={id} prefetch={false}>
       <MediaCard.Root>

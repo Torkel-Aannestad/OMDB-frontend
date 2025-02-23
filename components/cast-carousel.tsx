@@ -74,7 +74,7 @@ export function CastCarousel({
       </div>
 
       <CarouselContent>
-        {items.map((item) => (
+        {items.map((item, idx) => (
           <CarouselItem
             key={item.id}
             className={cn(
@@ -83,7 +83,7 @@ export function CastCarousel({
                 : "basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-[16%]"
             )}
           >
-            <CastCard {...item} />
+            <CastCard priority={idx > 9 ? true : false} {...item} />
           </CarouselItem>
         ))}
       </CarouselContent>

@@ -4,11 +4,25 @@ import { Crew } from "@/tmdb/models";
 import { MediaCard } from "@/components/media-card";
 import { MediaImages } from "./media-image";
 
-export function CrewCard({ id, name, profile_path, job }: Crew) {
+type CrewCardProps = Crew & {
+  priority?: boolean;
+};
+
+export function CrewCard({
+  priority = false,
+  id,
+  name,
+  profile_path,
+  job,
+}: CrewCardProps) {
   return (
     <Link href={`/person/${id}`} prefetch={false}>
       <MediaCard.Root>
-        <MediaImages.Poster image={profile_path} alt={name} />
+        <MediaImages.Poster
+          image={profile_path}
+          alt={name}
+          priority={priority}
+        />
         <MediaCard.Content>
           <MediaCard.Title>{name}</MediaCard.Title>
           <MediaCard.Excerpt>{job}</MediaCard.Excerpt>

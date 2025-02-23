@@ -13,9 +13,13 @@ import {
 
 type SearchResultCardProps = {
   media: MovieWithMediaType | SerieWithMediaType | PersonWithMediaType;
+  priority?: boolean;
 };
 
-export function SearchResultCard({ media }: SearchResultCardProps) {
+export function SearchResultCard({
+  media,
+  priority = false,
+}: SearchResultCardProps) {
   const { media_type, id } = media;
 
   const isPerson = media_type === "person";
@@ -25,7 +29,7 @@ export function SearchResultCard({ media }: SearchResultCardProps) {
   if (isMovie) {
     mediaTypeSlug = "movies";
   } else if (isPerson) {
-    mediaTypeSlug = "person";
+    mediaTypeSlug = "people";
   } else {
     mediaTypeSlug = "series";
   }
@@ -36,6 +40,7 @@ export function SearchResultCard({ media }: SearchResultCardProps) {
         <MediaImages.Poster
           image={isPerson ? media.profile_path : media.poster_path}
           alt={isMovie ? media.title : media.name}
+          priority={priority}
         />
         {isPerson && (
           <MediaCard.Content>

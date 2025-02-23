@@ -24,21 +24,32 @@ export default async function Search({ searchParams }: SearchProps) {
     <Container className="mt-28 md:mt-32 h-screen">
       <div className="space-y-8">
         <div className="md:mb-12 md:mt-6">
-          {/* <h1 className="mb-2 text-2xl font-medium">Search</h1> */}
           <SearchInput />
         </div>
         {results.length ? (
           <div className="grid-list">
-            {results.map((result) => {
-              return <SearchResultCard key={result.id} media={result} />;
+            {results.map((result, idx) => {
+              return (
+                <SearchResultCard
+                  key={result.id}
+                  priority={idx < 10 ? true : false}
+                  media={result}
+                />
+              );
             })}
           </div>
         ) : (
           <>
             <h1 className="mb-2 text-xl font-medium">Trending this week</h1>
             <div className="grid-list">
-              {trending.map((result) => {
-                return <SearchResultCard key={result.id} media={result} />;
+              {trending.map((result, idx) => {
+                return (
+                  <SearchResultCard
+                    key={result.id}
+                    priority={idx < 10 ? true : false}
+                    media={result}
+                  />
+                );
               })}
             </div>
           </>

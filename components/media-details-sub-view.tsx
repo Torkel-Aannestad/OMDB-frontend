@@ -14,7 +14,7 @@ function Top({ name, year, hrefBackLink, posterUrl }: TopProps) {
   return (
     <div className="flex gap-4">
       <div className="relative h-28 aspect-poster">
-        <MediaImages.Poster image={posterUrl} alt={`${name} poster`} />
+        <MediaImages.Poster image={posterUrl} alt={`${name} poster`} priority />
       </div>
       <div className="flex flex-col justify-center gap-4">
         <h2 className="text-2xl font-medium xl:text-4xl">

@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { MediaImages } from "@/components/media-image";
 import { MediaRating } from "@/components/media-rating";
 
-export const SerieEpisodeCard: React.FC<Episode> = ({
+export function SerieEpisodeCard({
   id,
   name,
   episode_number,
@@ -16,7 +16,7 @@ export const SerieEpisodeCard: React.FC<Episode> = ({
   air_date,
   overview,
   runtime,
-}) => {
+}: Episode) {
   return (
     <div className="flex flex-col rounded-md border">
       <div className="relative aspect-video" key={id}>
@@ -53,4 +53,4 @@ export const SerieEpisodeCard: React.FC<Episode> = ({
       </div>
     </div>
   );
-};
+}

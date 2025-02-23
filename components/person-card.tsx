@@ -5,17 +5,26 @@ import { Cast, Person } from "@/tmdb/models";
 import { MediaCard } from "@/components/media-card";
 import { MediaImages } from "./media-image";
 
+type PersonCardProps = Cast & {
+  priority?: boolean;
+};
+
 export function PersonCard({
+  priority = false,
   id,
   name,
   profile_path,
   known_for_department,
-}: Cast) {
+}: PersonCardProps) {
   return (
     <Link href={`/person/${id}`} key={id} className="w-full" prefetch={false}>
       <MediaCard.Root>
         <MediaCard.Content>
-          <MediaImages.Poster image={profile_path} alt={name} />
+          <MediaImages.Poster
+            image={profile_path}
+            alt={name}
+            priority={priority}
+          />
           <MediaCard.Title className="mt-2">{name}</MediaCard.Title>
 
           <MediaCard.Excerpt>
