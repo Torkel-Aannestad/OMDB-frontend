@@ -9,7 +9,7 @@ import { ComponentProps } from "react";
 import { cn } from "@/utils/tailwind";
 import { movieCategories, serieCategories } from "@/tmdb/utils/categories";
 import { ScrollArea, ScrollBar } from "./ui/scroll-area";
-import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
+import { Tabs, TabsList } from "./ui/tabs";
 
 function Main({ className, ...props }: ComponentProps<"div">) {
   return <div className={cn("flex flex-col gap-1", className)} {...props} />;
@@ -17,7 +17,7 @@ function Main({ className, ...props }: ComponentProps<"div">) {
 
 function ListTabs({ className, children }: ComponentProps<"div">) {
   return (
-    <Tabs>
+    <Tabs className={cn("", className)}>
       <TabsList>{children}</TabsList>
     </Tabs>
   );

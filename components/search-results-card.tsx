@@ -1,8 +1,4 @@
 import Link from "next/link";
-
-import { format } from "@/tmdb/utils";
-
-import { Badge } from "@/components/ui/badge";
 import { MediaCard } from "@/components/media-card";
 import { MediaImages } from "@/components/media-image";
 import {

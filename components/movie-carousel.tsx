@@ -1,12 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import type {
-  Movie,
-  MovieWithMediaType,
-  SerieWithMediaType,
-} from "@/tmdb/models";
+import type { Movie } from "@/tmdb/models";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 import { cn } from "@/utils/tailwind";

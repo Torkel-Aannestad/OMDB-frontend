@@ -111,7 +111,7 @@ function CreditsTableMovieItem({
       </TableCell>
       <TableCell>{release_date ? format.year(release_date) : "-"}</TableCell>
       <TableCell>
-        <Link className="font-medium" href={`/movie/${id}`}>
+        <Link className="font-medium" href={`/movies/${id}`}>
           {title}
         </Link>
         {(character || job) && (
@@ -139,7 +139,7 @@ function CreditsTableSerieItem({
         {first_air_date ? format.year(first_air_date) : "-"}
       </TableCell>
       <TableCell>
-        <Link className="font-medium" href={`/tv/${id}`}>
+        <Link className="font-medium" href={`/series/${id}`}>
           {name}
         </Link>
         <p className="text-muted-foreground">

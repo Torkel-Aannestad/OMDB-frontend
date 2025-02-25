@@ -8,7 +8,6 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { TabsLink } from "./ui/tabs";
 import { Skeleton } from "./ui/skeleton";
-import { MediaCard } from "./media-card";
 
 type MediaListProps = {
   title?: string;
@@ -112,7 +111,7 @@ export function MediaListViewSkeleton() {
               key={i}
               className="basis-1/2 rounded-md pb-4 pr-4 md:basis-1/3 lg:basis-1/4 xl:basis-1/5"
             >
-              <Skeleton className="aspect-poster w-full" />
+              <Skeleton className="aspect-poster w-60" />
             </div>
           ))}
         </div>

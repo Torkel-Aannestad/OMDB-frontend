@@ -1,6 +1,5 @@
 import { ReviewsView } from "@/components/reviews-view";
 import { tmdb } from "@/tmdb/api";
-import { notFound } from "next/navigation";
 
 type Props = {
   params: Promise<{ serieid: string }>;

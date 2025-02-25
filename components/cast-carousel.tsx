@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ComponentProps, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import type { Cast } from "@/tmdb/models";
 import { ArrowLeft, ArrowRight } from "lucide-react";

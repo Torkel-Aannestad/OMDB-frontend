@@ -1,14 +1,11 @@
 import { ContainerWithSpacing } from "@/components/container";
 import { MediaDetailsSubView } from "@/components/media-details-sub-view";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsLink, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsLink, TabsList } from "@/components/ui/tabs";
 import { tmdb } from "@/tmdb/api";
 import { format } from "@/tmdb/utils/format";
-import { cn } from "@/utils/tailwind";
-import Link from "next/link";
 
 type SeriesLayoutProps = {
-  params: { serieid: string };
+  params: Promise<{ serieid: string }>;
   children: React.ReactNode;
 };
 

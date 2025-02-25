@@ -1,10 +1,8 @@
 import { CastCard } from "@/components/cast-card";
 import { CrewCard } from "@/components/crew-card";
-import { MediaListView } from "@/components/media-list-view";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { tmdb } from "@/tmdb/api";
 import { getUniqueItems } from "@/utils/general";
-import { notFound } from "next/navigation";
 
 type Props = {
   params: Promise<{ serieid: string }>;

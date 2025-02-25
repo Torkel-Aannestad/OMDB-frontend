@@ -4,7 +4,6 @@ import { cn } from "@/utils/tailwind";
 import { buttonVariants } from "./ui/button";
 import { Play } from "lucide-react";
 import { yt } from "@/tmdb/utils/youtube";
-import { ComponentProps } from "react";
 
 type MediaTrailerDialogProps = {
   videos: Video[];

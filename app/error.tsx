@@ -1,7 +1,8 @@
-"use client"
+"use client";
 
-import { cn } from "@/utils/tailwind"
-import { buttonVariants } from "@/components/ui/button"
+import { cn } from "@/utils/tailwind";
+import { buttonVariants } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function ErrorPage() {
   return (
@@ -13,13 +14,13 @@ export default function ErrorPage() {
           <br />
           Please go back to the homepage.
         </p>
-        <a
+        <Link
           href="/"
           className={cn(buttonVariants({ variant: "default" }), "mt-6")}
         >
           Go home
-        </a>
+        </Link>
       </div>
     </div>
-  )
+  );
 }

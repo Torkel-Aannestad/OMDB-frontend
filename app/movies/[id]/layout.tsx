@@ -2,9 +2,9 @@ import { notFound } from "next/navigation";
 import { tmdb } from "@/tmdb/api";
 
 type DetailLayoutProps = {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
   children: React.ReactNode;
 };
 

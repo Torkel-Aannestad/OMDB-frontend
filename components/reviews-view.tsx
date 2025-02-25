@@ -13,7 +13,6 @@ import Link from "next/link";
 import type { Review } from "@/tmdb/models";
 import { Badge } from "./ui/badge";
 import { format } from "@/tmdb/utils";
-import { Divide, ReceiptPoundSterling } from "lucide-react";
 import { EmptyStateCard } from "./empty-state-card";
 
 type ReviewListProps = ComponentProps<"div"> & {
@@ -88,7 +87,7 @@ function Single({
 
 type ReviewCardProps = ComponentProps<"div"> & { review: Review };
 
-function ReviewCard({ review, className, ...props }: ReviewCardProps) {
+function ReviewCard({ review }: ReviewCardProps) {
   const { author_details, created_at, content } = review;
   const { name, avatar_path, rating, username } = author_details;
   const createdDate = format.date(created_at);

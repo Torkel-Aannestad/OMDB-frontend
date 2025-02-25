@@ -1,6 +1,5 @@
 import { ContainerWithSpacing } from "@/components/container";
 import { Hero } from "@/components/hero";
-import { MediaCarousel } from "@/components/media-carousel";
 import { MediaSingleSection } from "@/components/media-section-view";
 import { MovieCarousel } from "@/components/movie-carousel";
 import { MovieTop10Carousel } from "@/components/movie-top10-carousel";

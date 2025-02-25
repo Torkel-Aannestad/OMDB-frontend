@@ -1,5 +1,6 @@
 import { cn } from "@/utils/tailwind";
 import { buttonVariants } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function NotFound() {
   return (
@@ -11,12 +12,12 @@ export default function NotFound() {
           <br />
           Please go back to the homepage.
         </p>
-        <a
+        <Link
           href="/"
           className={cn(buttonVariants({ variant: "default" }), "mt-6")}
         >
           Go Home
-        </a>
+        </Link>
       </div>
     </div>
   );

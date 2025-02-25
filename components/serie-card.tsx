@@ -16,7 +16,11 @@ export function SerieCard({
   return (
     <Link href={`/series/${id}`} key={id} prefetch={false}>
       <MediaCard.Root>
-        <MediaImages.Poster image={poster_path} alt={name} />
+        <MediaImages.Poster
+          image={poster_path}
+          alt={name}
+          priority={priority}
+        />
       </MediaCard.Root>
     </Link>
   );

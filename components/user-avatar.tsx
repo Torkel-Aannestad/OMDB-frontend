@@ -9,7 +9,6 @@ type UserAvatarProps = ComponentProps<"div"> & {
   username: string;
   size?: ProfileSize;
   alt: string;
-  priority?: boolean;
 };
 
 export function UserAvatar({
@@ -18,7 +17,6 @@ export function UserAvatar({
   size = "w45",
   alt = "user avatar",
   className,
-  priority,
   ...props
 }: UserAvatarProps) {
   const src = image ? tmdbImage.profile(image, size) : null;

@@ -7,7 +7,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "./ui/carousel";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { tmdbImage } from "@/tmdb/utils";
@@ -24,34 +24,34 @@ type HeroProps = {
 };
 export function Hero({ items, startIndex = 0 }: HeroProps) {
   const [api, setApi] = useState<CarouselApi>();
-  const [current, setCurrent] = useState(0);
+  // const [current, setCurrent] = useState(startIndex);
 
-  const mediaSliced = items.slice(0, 6);
+  const mediaSliced = items.slice(startIndex, startIndex + 6);
 
-  useEffect(() => {
-    if (!api) return;
+  // useEffect(() => {
+  //   if (!api) return;
 
-    setCurrent(api.selectedScrollSnap());
-  }, [api]);
+  //   setCurrent(api.selectedScrollSnap());
+  // }, [api]);
 
   function nextSlide() {
     api?.scrollNext();
 
-    if (!api) return;
-    setCurrent(api.selectedScrollSnap());
+    // if (!api) return;
+    // setCurrent(api.selectedScrollSnap());
   }
 
   function previousSlide() {
     api?.scrollPrev();
 
-    if (!api) return;
-    setCurrent(api.selectedScrollSnap());
+    // if (!api) return;
+    // setCurrent(api.selectedScrollSnap());
   }
 
-  function setCurrentSlide(index: number) {
-    api?.scrollTo(index, true);
-    setCurrent(index);
-  }
+  // function setCurrentSlide(index: number) {
+  //   api?.scrollTo(index, true);
+  //   setCurrent(index);
+  // }
 
   return (
     <Carousel

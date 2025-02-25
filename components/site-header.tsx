@@ -6,9 +6,7 @@ import {
   ClapperboardIcon,
   TvIcon,
   Search,
-  LayoutGrid,
   HomeIcon,
-  Home,
 } from "lucide-react";
 import Link from "next/link";
 import { Container } from "./container";

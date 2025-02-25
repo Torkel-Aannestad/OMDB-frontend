@@ -1,11 +1,10 @@
 import { MediaImages } from "./media-image";
 import { tmdb } from "@/tmdb/api";
-import type { Episode, LastEpisodeToAir } from "@/tmdb/models";
+import type { LastEpisodeToAir } from "@/tmdb/models";
 import Link from "next/link";
 import { cn } from "@/utils/tailwind";
 import { buttonVariants } from "./ui/button";
 import { Badge } from "./ui/badge";
-import { MediaCard } from "./media-card";
 import { format } from "@/tmdb/utils";
 
 type LastSeasonProps = {

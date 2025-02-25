@@ -6,7 +6,7 @@ import type { Serie } from "@/tmdb/models";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 import { cn } from "@/utils/tailwind";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Carousel,
   CarouselApi,

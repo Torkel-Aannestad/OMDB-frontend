@@ -13,7 +13,6 @@ export function SeasonCard({
   id,
   poster_path,
   name,
-  vote_average,
   episode_count,
   serieId,
 }: SeasonCardProps) {

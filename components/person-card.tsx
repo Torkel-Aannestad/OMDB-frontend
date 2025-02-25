@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Cast, Person } from "@/tmdb/models";
+import { Cast } from "@/tmdb/models";
 
 import { MediaCard } from "@/components/media-card";
 import { MediaImages } from "./media-image";

@@ -1,19 +1,12 @@
-import { CastCarousel } from "@/components/cast-carousel";
-import { MovieRecommendedCarousel } from "@/components/movie-recommened-carousel";
-import { ReviewsView } from "@/components/reviews-view";
-import { PosterList, VideoImageCarousel } from "@/components/video-image-view";
+import { PosterList } from "@/components/video-image-view";
 import { MediaDetailView } from "@/components/media-details-view";
 import { tmdb } from "@/tmdb/api";
 import { format } from "@/tmdb/utils";
-import { MediaTrailerDialog } from "@/components/media-trailer-dialog";
 import { MediaImages } from "@/components/media-image";
-import { MovieCollection } from "@/components/movie-collection";
-import Link from "next/link";
 import { WithCombinedCredits } from "@/tmdb/api/people/types";
 import { WithImages } from "@/tmdb/api/types";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PersonCreditsTable } from "@/components/person-credits-table";
-import { Images, UtensilsIcon } from "lucide-react";
 import {
   filterByDepartment,
   getDepartments,
@@ -48,8 +41,6 @@ export default async function Details({ params }: DetailProps) {
     crew,
     department,
   });
-
-  console.log(`heroBackdrop: ${heroBackdrop}`);
 
   const info = [birthday && format.date(birthday), place_of_birth]
     .filter(Boolean)

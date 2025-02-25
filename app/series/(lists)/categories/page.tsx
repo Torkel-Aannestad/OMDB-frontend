@@ -1,6 +1,6 @@
 import { MediaListView } from "@/components/media-list-view";
 import { tmdb } from "@/tmdb/api";
-import { movieCategories, serieCategories } from "@/tmdb/utils/categories";
+import { serieCategories } from "@/tmdb/utils/categories";
 import { notFound } from "next/navigation";
 
 type CategoriesProps = {
