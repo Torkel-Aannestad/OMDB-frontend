@@ -102,7 +102,7 @@ export default async function Home() {
           linkTitle="All Popular Movies"
         />
         <MovieCarousel
-          title={`${categoryMovie1.name}`}
+          title={`${categoryMovie1.name} Movies`}
           link={`/movies/categories?with_genres=${categoryMovie1.id}`}
           linkTitle={`More ${categoryMovie1.name} Movies`}
           items={categoryMovie1Items}
@@ -119,13 +119,13 @@ export default async function Home() {
       <ContainerWithSpacing className="mt-8 md:mt-16 xl:mt-24">
         <SerieTop10Carousel items={seriesTop10} />
         <SerieCarousel
-          title={`${categorySerie1.name}`}
+          title={`${categorySerie1.name} Series`}
           items={categorySerie1Items}
           link={`/series/categories?with_genres=${categorySerie1.id}`}
           linkTitle={`More ${categorySerie1.name} Series`}
         />
         <SerieCarousel
-          title={`${categorySerie2.name}`}
+          title={`${categorySerie2.name} Series`}
           items={categorySerie2Items}
           link={`/series/categories?with_genres=${categorySerie2.id}`}
           linkTitle={`More ${categorySerie2.name} Series`}
@@ -142,13 +142,13 @@ export default async function Home() {
       <ContainerWithSpacing className="mt-8 md:mt-16 xl:mt-24">
         <MovieTop10Carousel items={moviesTop10} />
         <MovieCarousel
-          title={`${categoryMovie2.name}`}
+          title={`${categoryMovie2.name} Movies`}
           link={`/movies/categories?with_genres=${categoryMovie2.id}`}
           linkTitle={`More ${categoryMovie2.name} Movies`}
           items={categoryMovie2Items}
         />
         <MovieCarousel
-          title={`${categoryMovie3.name}`}
+          title={`${categoryMovie3.name} Movies`}
           link={`/movies/categories?with_genres=${categoryMovie3.id}`}
           linkTitle={`More ${categoryMovie3.name} Movies`}
           items={categoryMovie3Items}
@@ -162,13 +162,13 @@ export default async function Home() {
           mediaType="movie"
         />
         <SerieCarousel
-          title={`${categorySerie3.name}`}
+          title={`${categorySerie3.name} Series`}
           items={categorySerie3Items}
           link={`/series/categories?with_genres=${categorySerie3.id}`}
           linkTitle={`More ${categorySerie3.name} Series`}
         />
         <SerieCarousel
-          title={`${categorySerie4.name}`}
+          title={`${categorySerie4.name} Series`}
           items={categorySerie4Items}
           link={`/series/categories?with_genres=${categorySerie4.id}`}
           linkTitle={`More ${categorySerie4.name} Series`}

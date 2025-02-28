@@ -45,8 +45,8 @@ export async function SerieLastSeason({
           </Link>
         )}
       </div>
-      <div className="relative w-full h-80 flex bg-card rounded-md shadow">
-        <div className="relative w-44 sm:w-56 shrink-0">
+      <div className="relative w-full md:h-80 flex flex-col md:flex-row bg-card rounded-md shadow">
+        <div className="relative md:w-48 lg:w-56 shrink-0">
           <MediaImages.Poster
             className="border-none"
             image={poster_path}
