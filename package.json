@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
+    "build": "next build && cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/",
+    "start": "node .next/standalone/server.js",
     "lint": "next lint"
   },
   "dependencies": {
@@ -45,8 +45,5 @@
     "prettier-plugin-tailwindcss": "^0.6.9",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
-  },
-  "overrides": {
-    "react-is": "^19.0.0"
   }
 }

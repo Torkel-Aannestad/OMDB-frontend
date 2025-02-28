@@ -26,25 +26,3 @@ export type SpokenLanguage = {
   name: string;
 };
 
-// export type GeneralMediaItem = {
-//   id: number;
-//   media_type: string;
-//   name: string; //serie
-//   title: string; //movie
-//   original_name: string; //serie
-//   original_title: string; //movie
-//   overview: string;
-//   genre_ids: Genre[];
-//   poster_path: string;
-//   profile_path: string; //person
-//   backdrop_path: string;
-//   first_air_date: string; //serie
-//   release_date: string; //movie
-//   original_language: string;
-//   origin_country: string[];
-//   popularity: number;
-//   vote_average: number;
-//   vote_count: number;
-//   adult: boolean;
-//   known_for_department: string; //person
-// };
