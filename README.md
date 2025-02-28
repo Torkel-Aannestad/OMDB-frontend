@@ -8,12 +8,12 @@ Stack:
 - Next.js
 - Shadcn UI components
 - Data from [TMDB API](https://developer.themoviedb.org/docs/getting-started)
-- Hosting with Ubuntu VM running docker and Nginx reverse proxy. Shell scripts for building and deploying the project.
+- Hosting with Ubuntu VM running docker and Nginx reverse proxy. Shell scripts for VM setup and Makefile with script to deploy to production.
 
 Created by Torkel Aannestad
 
-[torkelaannestad.com](https://torkelaannestad.com/)
-[Github](https://github.com/Torkel-Aannestad)
+- [torkelaannestad.com](https://torkelaannestad.com/)
+- [Github](https://github.com/Torkel-Aannestad)
 
 ## Author takeaways
 
